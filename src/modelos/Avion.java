@@ -8,4 +8,9 @@ public class Avion {
 
         System.out.println("Numero");
     }
+
+    public static void main(String[] args) {
+
+        System.out.println("asdf");
+    }
 }
