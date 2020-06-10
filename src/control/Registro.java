@@ -15,9 +15,8 @@ import java.util.List;
 
 public class Registro {
 
-    public final static String nombreArchivo = "Usuarios.json";
     private Gson gson;
-    private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();;
+    private GestorArchivoUsuarios gestorArchivoUsuarios = new GestorArchivoUsuarios();
 
     public Registro() {
         gson = new Gson();
@@ -34,35 +33,9 @@ public class Registro {
     }
 
     public void registrarUsuario(Usuario usuario){
-        leerUsuarios();
-        usuarios.add(usuario);
-        try (FileWriter writer = new FileWriter(nombreArchivo)) {
-            gson.toJson(usuarios, writer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        gestorArchivoUsuarios.agregarUsuario(usuario);
     }
 
-    /*public void agregarUsuario(Usuario usuario){
-        usuarios.add(usuario);
-    }*/
-
-    public void leerUsuarios() {
-        final Type tipoListaUsuarios = new TypeToken<List<Usuario>>(){}.getType();
-        try {
-            JsonReader jsonReader = new JsonReader(new FileReader(nombreArchivo));
-            List<Usuario> usuariosJson = gson.fromJson(jsonReader, tipoListaUsuarios);
-            if(usuariosJson == null) {
-                usuarios = new ArrayList<Usuario>();
-            } else {
-                for(Usuario usuario : usuariosJson) {
-                    usuarios.add(usuario);
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void main(String[] args) {
 

@@ -14,25 +14,15 @@ import java.util.List;
 
 public class Login {
 
-    public final static String nombreArchivo = "Usuarios.json";
     private Gson gson;
-    public ArrayList<Usuario> usuarios = new ArrayList<Usuario>();;
+    private GestorArchivoUsuarios gestorArchivoUsuarios = new GestorArchivoUsuarios();
 
     public Login() {
         gson = new Gson();
-        leerUsuarios();
     }
 
     public Usuario buscarUsuario(String dni) {
-        Usuario usuarioBuscado = null;
-        Iterator<Usuario> iteradorUsuarios = usuarios.iterator();
-        Usuario aux;
-        while(iteradorUsuarios.hasNext() && usuarioBuscado == null) {
-            aux = iteradorUsuarios.next();
-            if(aux.getDni().equals(dni)) {
-                usuarioBuscado = aux;
-            }
-        }
+        Usuario usuarioBuscado = gestorArchivoUsuarios.buscarUsuario(dni);
         return usuarioBuscado;
     }
 
@@ -43,16 +33,6 @@ public class Login {
     /*public Usuario loguearUsuario() {
 
     }*/
-
-    public void leerUsuarios() {
-        final Type tipoListaUsuarios = new TypeToken<List<Usuario>>(){}.getType();
-        try {
-            JsonReader jsonReader = new JsonReader(new FileReader(nombreArchivo));
-            usuarios = gson.fromJson(jsonReader, tipoListaUsuarios);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void main(String[] args) {
         Usuario usuarioALoguear;
