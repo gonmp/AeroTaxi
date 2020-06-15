@@ -1,17 +1,43 @@
 package Visual;
 
+import control.Registro;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class VentanaRegistro extends JFrame {
 
     private JPanel panelInicial;
+    JTextField cajaTextoNuevoDni;
+    JTextField cajaTextoNuevaContrasenia;
+    JTextField cajaTextoConfirmarContrasenia;
+    JTextField cajaTextoNombre;
+    JTextField cajaTextoApellido;
+    JTextField cajaTextoEdad;
+    JTextField cajaTextoEmail;
+
+    JLabel etiquetaError;
+
+    List<JTextField> cajasTexto;
+
+    Registro registro;
 
     public VentanaRegistro() {
+
+        registro = new Registro();
+
         this.setBounds(100, 60, 800, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Aerotaxis Un'kut");
         iniciarComponentesRegistro();
+
+        cajasTexto = new ArrayList<JTextField>();
+        crearArregloCajaTexto();
         
     }
 
@@ -73,48 +99,77 @@ public class VentanaRegistro extends JFrame {
         etiquetaEmail.setBounds(430, 240, 400, 50);
         etiquetaEmail.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         panelInicial.add(etiquetaEmail);
+
+        etiquetaError = new JLabel("");
+        etiquetaError.setBounds(280, 300, 400, 50);
+        etiquetaError.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        etiquetaError.setForeground(Color.RED);
+        panelInicial.add(etiquetaError);
     }
 
     private void colocarBotones(){
 
-        JButton botonAceptar = new JButton("Aceptar");
-        botonAceptar.setBounds(90, 400, 120, 40);
-        botonAceptar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-        panelInicial.add(botonAceptar);
+        JButton botonRegistrar = new JButton("Registrar");
+        botonRegistrar.setBounds(90, 400, 120, 40);
+        botonRegistrar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonRegistrar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonRegistrarClick(e);
+            }
+        });
+        panelInicial.add(botonRegistrar);
 
-        JButton botonCancelar = new JButton("Cancelar");
-        botonCancelar.setBounds(565, 400, 120, 40);
-        botonCancelar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-        panelInicial.add(botonCancelar);
+        JButton botonLogin = new JButton("Ya estoy registrado");
+        botonLogin.setBounds(280, 400, 200, 40);
+        botonLogin.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonLogin.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonLoginClick(e);
+            }
+        });
+        panelInicial.add(botonLogin);
+
+        JButton botonSalir = new JButton("Salir");
+        botonSalir.setBounds(565, 400, 120, 40);
+        botonSalir.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonSalir.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonSalirClick(e);
+            }
+        });
+        panelInicial.add(botonSalir);
     }
 
     private void colocarCajasTexto(){
 
-        JTextField cajaTextoNuevoDni = new JTextField();
+        cajaTextoNuevoDni = new JTextField();
         cajaTextoNuevoDni.setBounds(200, 60, 180, 40);
         panelInicial.add(cajaTextoNuevoDni);
 
-        JTextField cajaTextoNuevaContraseña = new JTextField();
-        cajaTextoNuevaContraseña.setBounds(200, 120, 180, 40);
-        panelInicial.add(cajaTextoNuevaContraseña);
+        cajaTextoNuevaContrasenia = new JTextField();
+        cajaTextoNuevaContrasenia.setBounds(200, 120, 180, 40);
+        panelInicial.add(cajaTextoNuevaContrasenia);
 
-        JTextField cajaTextoConfirmarContraseña = new JTextField();
-        cajaTextoConfirmarContraseña.setBounds(200, 180, 180, 40);
-        panelInicial.add(cajaTextoConfirmarContraseña);
+        cajaTextoConfirmarContrasenia = new JTextField();
+        cajaTextoConfirmarContrasenia.setBounds(200, 180, 180, 40);
+        panelInicial.add(cajaTextoConfirmarContrasenia);
 
-        JTextField cajaTextoNombre = new JTextField();
+        cajaTextoNombre = new JTextField();
         cajaTextoNombre.setBounds(520, 60, 200, 40);
         panelInicial.add(cajaTextoNombre);
 
-        JTextField cajaTextoApellido = new JTextField();
+        cajaTextoApellido = new JTextField();
         cajaTextoApellido.setBounds(520, 120, 200, 40);
         panelInicial.add(cajaTextoApellido);
 
-        JTextField cajaTextoEdad = new JTextField();
+        cajaTextoEdad = new JTextField();
         cajaTextoEdad.setBounds(520, 180, 200, 40);
         panelInicial.add(cajaTextoEdad);
 
-        JTextField cajaTextoEmail = new JTextField();
+        cajaTextoEmail = new JTextField();
         cajaTextoEmail.setBounds(520, 240, 200, 40);
         panelInicial.add(cajaTextoEmail);
 
@@ -131,4 +186,109 @@ public class VentanaRegistro extends JFrame {
         panelInicial.add(radioBotonTerminos);
     }
 
+    public void crearArregloCajaTexto() {
+        cajasTexto.add(cajaTextoNombre);
+        cajasTexto.add(cajaTextoApellido);
+        cajasTexto.add(cajaTextoNuevaContrasenia);
+        cajasTexto.add(cajaTextoConfirmarContrasenia);
+        cajasTexto.add(cajaTextoEdad);
+        cajasTexto.add(cajaTextoEmail);
+        cajasTexto.add(cajaTextoNuevoDni);
+    }
+
+    public static void main(String[] args) {
+        VentanaRegistro ventania2 = new VentanaRegistro();
+        ventania2.setVisible(true);
+    }
+
+    public void botonLoginClick(MouseEvent e) {
+        this.dispose();
+        VentanaIngreso ventana = new VentanaIngreso();
+        ventana.setVisible(true);
+    }
+
+    public void botonRegistrarClick(MouseEvent e) {
+        //Debemos chequear que todos los campos esten completos
+        if(hayCamposVacios()) {
+            etiquetaError.setText("Todos los campos deben estar completos");
+            return;
+        }
+
+        //Debemos chequear que en todos los campos se haya ingresado informacion acorde a lo solicitado
+        if(!comprobarEmail()) {
+            etiquetaError.setText("Debe ingresar un email valido");
+            return;
+        }
+
+        if(!comprobarEdad()) {
+            etiquetaError.setText("La edad ingresada debe ser un número");
+            return;
+        }
+
+        if(!comprobarContrasenias()) {
+            etiquetaError.setText("Las contraseñas no coinciden");
+            return;
+        }
+
+        //Debemos verificar que el usuario no exista
+        if(registro.verificarUsuarioExistente(cajaTextoNuevoDni.getText())) {
+            etiquetaError.setText("El usuario ya existe, aprete login para loguearse");
+            return;
+        }
+
+        //Debemos crear el usuario y almacenarlo
+        registro.registrar(cajaTextoNombre.getText(), cajaTextoApellido.getText(), cajaTextoNuevoDni.getText(), Integer.parseInt(cajaTextoEdad.getText()), cajaTextoEmail.getText(), cajaTextoNuevaContrasenia.getText());
+    }
+
+    public void botonSalirClick(MouseEvent e) {
+        System.exit(0);
+    }
+
+    public void comprobarCamposVacios() {
+        if(hayCamposVacios()) {
+            etiquetaError.setText("Todos los campos deben estar completos");
+        }
+    }
+
+    public boolean hayCamposVacios() {
+        boolean camposVacios = false;
+        Iterator<JTextField> iterador = cajasTexto.iterator();
+        JTextField aux;
+        while(iterador.hasNext() && !camposVacios) {
+            aux = iterador.next();
+            if(aux.getText().equals("")) {
+                camposVacios = true;
+            }
+        }
+        return  camposVacios;
+    }
+
+    public boolean comprobarEmail() {
+        boolean esEmail = true;
+        String email = cajaTextoEmail.getText();
+        Integer posArroba = email.indexOf('@');
+        Integer posCom = email.indexOf(".com");
+        if(posArroba.equals(-1) || posCom.equals(-1)) {
+            esEmail = false;
+        }
+        return esEmail;
+    }
+
+    public boolean comprobarEdad() {
+        boolean esNumero = true;
+        try {
+            int edad = Integer.parseInt(cajaTextoEdad.getText());
+        } catch (NumberFormatException numberFormat) {
+            esNumero = false;
+        }
+        return esNumero;
+    }
+
+    public boolean comprobarContrasenias() {
+        boolean contraseniasIguales = false;
+        if(cajaTextoNuevaContrasenia.getText().equals(cajaTextoConfirmarContrasenia.getText())) {
+            contraseniasIguales = true;
+        }
+        return contraseniasIguales;
+    }
 }

@@ -23,7 +23,11 @@ public class Registro {
     }
 
     public boolean verificarUsuarioExistente(String dni) {
-        return true;
+        boolean existeUsuario = false;
+        if(gestorArchivoUsuarios.buscarUsuario(dni) != null) {
+            existeUsuario = true;
+        }
+        return  existeUsuario;
     }
 
     public Usuario crearUsuario(String nombre, String apellido, String dni, int edad, String email, String contrasenia) {
@@ -34,6 +38,10 @@ public class Registro {
 
     public void registrarUsuario(Usuario usuario){
         gestorArchivoUsuarios.agregarUsuario(usuario);
+    }
+
+    public void registrar(String nombre, String apellido, String dni, int edad, String email, String contrasenia) {
+        registrarUsuario(crearUsuario(nombre, apellido, dni, edad, email, contrasenia));
     }
 
 

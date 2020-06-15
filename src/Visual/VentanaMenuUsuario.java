@@ -1,17 +1,21 @@
 package Visual;
 
+import modelos.Usuario;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class VentanaMenuUsuario extends JFrame {
 
     private JPanel panelInicial;
+    private Usuario usuarioLogueado;
 
-    public VentanaMenuUsuario(){
+    public VentanaMenuUsuario(Usuario usuarioLogueado){
         this.setBounds(100, 60, 450, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Aerotaxis Un'kut");
         iniciarComponentesIngreso();
+        this.usuarioLogueado = usuarioLogueado;
     }
 
     private void iniciarComponentesIngreso(){

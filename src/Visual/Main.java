@@ -28,7 +28,7 @@ public class Main {
        /* VentanaModContraseña ventania8 = new VentanaModContraseña();
         ventania8.setVisible(true);*/
 
-        VentanaModPerfil ventania9 = new VentanaModPerfil();
-        ventania9.setVisible(true);
+        /*VentanaModPerfil ventania9 = new VentanaModPerfil();
+        ventania9.setVisible(true);*/
     }
 }
