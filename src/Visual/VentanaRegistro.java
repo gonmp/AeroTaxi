@@ -14,8 +14,8 @@ public class VentanaRegistro extends JFrame {
 
     private JPanel panelInicial;
     JTextField cajaTextoNuevoDni;
-    JTextField cajaTextoNuevaContrasenia;
-    JTextField cajaTextoConfirmarContrasenia;
+    JPasswordField cajaTextoNuevaContrasenia;
+    JPasswordField cajaTextoConfirmarContrasenia;
     JTextField cajaTextoNombre;
     JTextField cajaTextoApellido;
     JTextField cajaTextoEdad;
@@ -149,11 +149,11 @@ public class VentanaRegistro extends JFrame {
         cajaTextoNuevoDni.setBounds(200, 60, 180, 40);
         panelInicial.add(cajaTextoNuevoDni);
 
-        cajaTextoNuevaContrasenia = new JTextField();
+        cajaTextoNuevaContrasenia = new JPasswordField();
         cajaTextoNuevaContrasenia.setBounds(200, 120, 180, 40);
         panelInicial.add(cajaTextoNuevaContrasenia);
 
-        cajaTextoConfirmarContrasenia = new JTextField();
+        cajaTextoConfirmarContrasenia = new JPasswordField();
         cajaTextoConfirmarContrasenia.setBounds(200, 180, 180, 40);
         panelInicial.add(cajaTextoConfirmarContrasenia);
 

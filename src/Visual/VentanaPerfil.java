@@ -1,13 +1,19 @@
 package Visual;
 
+import modelos.Usuario;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VentanaPerfil extends JFrame {
 
     private JPanel panelInicial;
+    private Usuario usuarioLogueado;
 
-    public VentanaPerfil() {
+    public VentanaPerfil(Usuario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
         this.setBounds(100, 60, 800, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Aerotaxis Un'kut");
@@ -70,22 +76,37 @@ public class VentanaPerfil extends JFrame {
 
         JTextField cajaTextoDni = new JTextField();
         cajaTextoDni.setBounds(200, 60, 180, 40);
+        cajaTextoDni.setEnabled(false);
+        cajaTextoDni.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+        cajaTextoDni.setText(usuarioLogueado.getDni());
         panelInicial.add(cajaTextoDni);
 
         JTextField cajaTextoNombre = new JTextField();
         cajaTextoNombre.setBounds(200, 120, 180, 40);
+        cajaTextoNombre.setEnabled(false);
+        cajaTextoNombre.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+        cajaTextoNombre.setText(usuarioLogueado.getNombre());
         panelInicial.add(cajaTextoNombre);
 
         JTextField cajaTextoApellido = new JTextField();
         cajaTextoApellido.setBounds(200, 180, 180, 40);
+        cajaTextoApellido.setEnabled(false);
+        cajaTextoApellido.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+        cajaTextoApellido.setText(usuarioLogueado.getApellido());
         panelInicial.add(cajaTextoApellido);
 
         JTextField cajaTextoEdad = new JTextField();
         cajaTextoEdad.setBounds(200, 245, 180, 40);
+        cajaTextoEdad.setEnabled(false);
+        cajaTextoEdad.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+        cajaTextoEdad.setText(String.valueOf(usuarioLogueado.getEdad()));
         panelInicial.add(cajaTextoEdad);
 
         JTextField cajaTextoCorreo = new JTextField();
         cajaTextoCorreo.setBounds(200, 305, 260, 40);
+        cajaTextoCorreo.setEnabled(false);
+        cajaTextoCorreo.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+        cajaTextoCorreo.setText(usuarioLogueado.getEmail());
         panelInicial.add(cajaTextoCorreo);
 
     }
@@ -95,11 +116,23 @@ public class VentanaPerfil extends JFrame {
         JButton botonModificarDatos = new JButton("Modificar Datos");
         botonModificarDatos.setBounds(175, 400, 200, 40);
         botonModificarDatos.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonModificarDatos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonModificarDatosClick(e);
+            }
+        });
         panelInicial.add(botonModificarDatos);
 
         JButton botonAtras = new JButton("Atras");
         botonAtras.setBounds(645, 400, 120, 40);
         botonAtras.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonAtras.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonAtrasClick(e);
+            }
+        });
         panelInicial.add(botonAtras);
 
         JButton botonCambiarContraseña= new JButton("Cambiar contraseña");
@@ -109,10 +142,27 @@ public class VentanaPerfil extends JFrame {
 
     }
 
+    public void botonAtrasClick(MouseEvent e) {
+        this.dispose();
+        VentanaMenuUsuario ventanaMenuUsuario = new VentanaMenuUsuario(usuarioLogueado);
+        ventanaMenuUsuario.setVisible(true);
+    }
+
+    public void botonModificarDatosClick(MouseEvent e) {
+        this.dispose();
+        VentanaModPerfil ventanaModPerfil = new VentanaModPerfil(usuarioLogueado);
+        ventanaModPerfil.setVisible(true);
+    }
+
     /*private void colocarRadioBotones(){
 
         JRadioButton radioBotonEliminar = new JRadioButton("Eliminar mi perfil");
         radioBotonEliminar.setBounds(17, 326, 300, 37);
         panelInicial.add(radioBotonEliminar);
     }*/
+
+    public static void main(String[] args) {
+        /*VentanaPerfil ventanaPerfil = new VentanaPerfil();
+        ventanaPerfil.setVisible(true);*/
+    }
 }

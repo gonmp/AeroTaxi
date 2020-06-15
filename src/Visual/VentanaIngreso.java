@@ -15,7 +15,7 @@ public class VentanaIngreso extends JFrame {
     private Usuario usuarioLoguar;
 
     JTextField cajaTextoDni;
-    JTextField cajaTextoContrasenia;
+    JPasswordField cajaTextoContrasenia;
 
     JLabel etiquetaError;
 
@@ -114,7 +114,7 @@ public class VentanaIngreso extends JFrame {
         cajaTextoDni.setBounds(370, 150, 200, 40);
         panelInicial.add(cajaTextoDni);
 
-        cajaTextoContrasenia = new JTextField();
+        cajaTextoContrasenia = new JPasswordField();
         cajaTextoContrasenia.setBounds(370, 250, 200, 40);
         panelInicial.add(cajaTextoContrasenia);
 

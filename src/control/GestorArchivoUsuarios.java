@@ -37,6 +37,30 @@ public class GestorArchivoUsuarios {
         return usuarioBuscado;
     }
 
+    public int buscarIndexUsuario(String dni) {
+        Integer index = -1;
+        Iterator<Usuario> iteradorUsuarios = usuarios.iterator();
+        Usuario aux;
+        int contador = 0;
+        while(iteradorUsuarios.hasNext() && index.equals(-1)) {
+            aux = iteradorUsuarios.next();
+            contador++;
+            if(aux.getDni().equals(dni)) {
+                index = contador - 1;
+            }
+        }
+        return index;
+    }
+
+    public void reemplazarUsuario(int index, Usuario nuevoUsuario) {
+        usuarios.set(index, nuevoUsuario);
+        try (FileWriter writer = new FileWriter(ArchivoDatos.archivoUsuarios)) {
+            gson.toJson(usuarios, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void leerUsuarios() {
         final Type tipoListaUsuarios = new TypeToken<List<Usuario>>(){}.getType();
         try {

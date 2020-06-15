@@ -140,4 +140,9 @@ public class VentanaSolicitud extends JFrame {
             panelInicial.add(listadoVuelos);
 
         }
+
+    public static void main(String[] args) {
+        VentanaSolicitud ventanaSolicitud = new VentanaSolicitud();
+        ventanaSolicitud.setVisible(true);
+    }
 }

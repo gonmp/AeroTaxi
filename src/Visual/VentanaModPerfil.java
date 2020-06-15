@@ -1,17 +1,46 @@
 package Visual;
 
+import control.ModificadorDatosUsuario;
+import control.Registro;
+import modelos.Usuario;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class VentanaModPerfil extends JFrame {
 
     private JPanel panelInicial;
+    private Usuario usuarioLogueado;
+    private ModificadorDatosUsuario modificadorDatosUsuario;
+    private Registro registro;
+    private JLabel etiquetaError;
 
-    public VentanaModPerfil() {
+    JTextField cajaTextoNuevoDni;
+    JTextField cajaTextoNuevoNombre;
+    JTextField cajaTextoNuevoApellido;
+    JTextField cajaTextoNuevaEdad;
+    JTextField cajaTextoNuevoCorreo;
+
+    private List<JTextField> cajasTexto;
+
+    public VentanaModPerfil(Usuario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
+        modificadorDatosUsuario = new ModificadorDatosUsuario(usuarioLogueado);
+
+        registro = new Registro();
+
         this.setBounds(100, 60, 800, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Aerotaxis Un'kut");
         iniciarComponentesRegistro();
+
+        cajasTexto = new ArrayList<JTextField>();
+        crearArregloCajaTexto();
 
     }
 
@@ -63,28 +92,39 @@ public class VentanaModPerfil extends JFrame {
         etiquetaModEmail.setBounds(15, 260, 400, 50);
         etiquetaModEmail.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         panelInicial.add(etiquetaModEmail);
+
+        etiquetaError = new JLabel("");
+        etiquetaError.setBounds(500, 350, 400, 50);
+        etiquetaError.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        etiquetaError.setForeground(Color.RED);
+        panelInicial.add(etiquetaError);
     }
 
     private void colocarCajasTexto(){
 
-        JTextField cajaTextoNuevoDni = new JTextField();
+        cajaTextoNuevoDni = new JTextField();
         cajaTextoNuevoDni.setBounds(220, 65, 200, 35);
+        cajaTextoNuevoDni.setText(usuarioLogueado.getDni());
         panelInicial.add(cajaTextoNuevoDni);
 
-        JTextField cajaTextoNuevoNombre = new JTextField();
+        cajaTextoNuevoNombre = new JTextField();
         cajaTextoNuevoNombre.setBounds(220, 115, 200, 35);
+        cajaTextoNuevoNombre.setText(usuarioLogueado.getNombre());
         panelInicial.add(cajaTextoNuevoNombre);
 
-        JTextField cajaTextoNuevoApellido = new JTextField();
+        cajaTextoNuevoApellido = new JTextField();
         cajaTextoNuevoApellido.setBounds(220, 165, 200, 35);
+        cajaTextoNuevoApellido.setText(usuarioLogueado.getApellido());
         panelInicial.add(cajaTextoNuevoApellido);
 
-        JTextField cajaTextoNuevaEdad = new JTextField();
+        cajaTextoNuevaEdad = new JTextField();
         cajaTextoNuevaEdad.setBounds(220, 215, 200, 35);
+        cajaTextoNuevaEdad.setText(String.valueOf(usuarioLogueado.getEdad()));
         panelInicial.add(cajaTextoNuevaEdad);
 
-        JTextField cajaTextoNuevoCorreo = new JTextField();
+        cajaTextoNuevoCorreo = new JTextField();
         cajaTextoNuevoCorreo.setBounds(220, 266, 200, 35);
+        cajaTextoNuevoCorreo.setText(usuarioLogueado.getEmail());
         panelInicial.add(cajaTextoNuevoCorreo);
 
     }
@@ -101,13 +141,111 @@ public class VentanaModPerfil extends JFrame {
         JButton botonConfirmar = new JButton("Confirmar");
         botonConfirmar.setBounds(500, 400, 120, 40);
         botonConfirmar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonConfirmar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonConfirmarClick(e);
+            }
+        });
         panelInicial.add(botonConfirmar);
 
         JButton botonCancelar = new JButton("Cancelar");
         botonCancelar.setBounds(645, 400, 120, 40);
         botonCancelar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonCancelar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonCancelarClick(e);
+            }
+        });
         panelInicial.add(botonCancelar);
 
+    }
+
+    public void crearArregloCajaTexto() {
+        cajasTexto.add(cajaTextoNuevoNombre);
+        cajasTexto.add(cajaTextoNuevoApellido);
+        cajasTexto.add(cajaTextoNuevaEdad);
+        cajasTexto.add(cajaTextoNuevoCorreo);
+        cajasTexto.add(cajaTextoNuevoDni);
+    }
+
+    public void botonConfirmarClick(MouseEvent e) {
+        if(!comprobarEmail()) {
+            etiquetaError.setText("Debe ingresar un email valido");
+            return;
+        }
+
+        if(!comprobarEdad()) {
+            etiquetaError.setText("La edad ingresada debe ser un número");
+            return;
+        }
+
+        //Debemos verificar que el usuario no exista
+        if(!cajaTextoNuevoDni.getText().equals(usuarioLogueado.getDni())) {
+            if(registro.verificarUsuarioExistente(cajaTextoNuevoDni.getText())) {
+                etiquetaError.setText("El usuario ya existe, aprete login para loguearse");
+                return;
+            }
+        }
+
+        //Debemos crear el usuario y almacenarlo
+        Usuario usuarioModificado = modificadorDatosUsuario.ModificarUsuario(cajaTextoNuevoNombre.getText(), cajaTextoNuevoApellido.getText(), cajaTextoNuevoDni.getText(), Integer.parseInt(cajaTextoNuevaEdad.getText()), cajaTextoNuevoCorreo.getText());
+        this.dispose();
+        VentanaMenuUsuario ventanaMenuUsuario = new VentanaMenuUsuario(usuarioModificado);
+        ventanaMenuUsuario.setVisible(true);
+    }
+
+    public void comprobarCamposVacios() {
+        if(hayCamposVacios()) {
+            etiquetaError.setText("Todos los campos deben estar completos");
+        }
+    }
+
+    public boolean hayCamposVacios() {
+        boolean camposVacios = false;
+        Iterator<JTextField> iterador = cajasTexto.iterator();
+        JTextField aux;
+        while(iterador.hasNext() && !camposVacios) {
+            aux = iterador.next();
+            if(aux.getText().equals("")) {
+                camposVacios = true;
+            }
+        }
+        return  camposVacios;
+    }
+
+    public boolean comprobarEmail() {
+        boolean esEmail = true;
+        String email = cajaTextoNuevoCorreo.getText();
+        Integer posArroba = email.indexOf('@');
+        Integer posCom = email.indexOf(".com");
+        if(posArroba.equals(-1) || posCom.equals(-1)) {
+            esEmail = false;
+        }
+        return esEmail;
+    }
+
+    public boolean comprobarEdad() {
+        boolean esNumero = true;
+        try {
+            int edad = Integer.parseInt(cajaTextoNuevaEdad.getText());
+        } catch (NumberFormatException numberFormat) {
+            esNumero = false;
+        }
+        return esNumero;
+    }
+
+    public void botonCancelarClick(MouseEvent e) {
+        this.dispose();
+        VentanaPerfil ventanaPerfil = new VentanaPerfil(usuarioLogueado);
+        ventanaPerfil.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        Usuario usuario = new Usuario("Gonza", "Perez", "35789456", 45, "hola@gmail.com", "123456");
+        VentanaModPerfil ventanaModPerfil = new VentanaModPerfil(usuario);
+        ventanaModPerfil.setVisible(true);
     }
 
 }

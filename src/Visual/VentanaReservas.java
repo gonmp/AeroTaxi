@@ -60,4 +60,9 @@ public class VentanaReservas extends JFrame {
         panelInicial.add(listadoVuelos);
 
     }
+
+    public static void main(String[] args) {
+        VentanaReservas ventanaReservas = new VentanaReservas();
+        ventanaReservas.setVisible(true);
+    }
 }

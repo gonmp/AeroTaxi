@@ -114,4 +114,9 @@ public class VentanaModReserva extends JFrame {
         panelInicial.add(radioBotonCancelar);
     }
 
+    public static void main(String[] args) {
+        VentanaModReserva ventanaModReserva = new VentanaModReserva();
+        ventanaModReserva.setVisible(true);
+    }
+
 }
