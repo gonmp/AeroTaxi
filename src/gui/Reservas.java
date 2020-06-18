@@ -1,16 +1,16 @@
-package Visuales;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class VentanaReservas extends JFrame {
+public class Reservas extends JFrame {
 
     private JPanel panelInicial;
 
-    public VentanaReservas() {
+    public Reservas() {
         this.setBounds(100, 60, 800, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Aerotaxis Un'kut");
+        setTitle("Aerotaxis PepePotamo");
         iniciarComponentesRegistro();
 
     }
@@ -59,5 +59,10 @@ public class VentanaReservas extends JFrame {
         listadoVuelos.setBounds(43, 80, 700, 280);
         panelInicial.add(listadoVuelos);
 
+    }
+
+    public static void main(String[] args) {
+        Reservas reservas = new Reservas();
+        reservas.setVisible(true);
     }
 }

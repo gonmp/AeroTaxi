@@ -1,18 +1,18 @@
-package Visual;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class VentanaModReserva extends JFrame {
+public class ModificarReserva extends JFrame {
 
     private JPanel panelInicial;
 
     private String[] destinos = {"Buenos Aires", "Cordoba", "Santiago", "Montevideo"};
 
-    public VentanaModReserva() {
+    public ModificarReserva() {
         this.setBounds(100, 60, 800, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Aerotaxis Un'kut");
+        setTitle("Aerotaxis PepePotamo");
         iniciarComponentesRegistro();
 
     }
@@ -115,8 +115,8 @@ public class VentanaModReserva extends JFrame {
     }
 
     public static void main(String[] args) {
-        VentanaModReserva ventanaModReserva = new VentanaModReserva();
-        ventanaModReserva.setVisible(true);
+        ModificarReserva modificarReserva = new ModificarReserva();
+        modificarReserva.setVisible(true);
     }
 
 }

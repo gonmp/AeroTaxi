@@ -1,4 +1,4 @@
-package Visual;
+package gui;
 
 import control.ModificadorDatosUsuario;
 import control.Registro;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class VentanaModPerfil extends JFrame {
+public class ModificarPerfil extends JFrame {
 
     private JPanel panelInicial;
     private Usuario usuarioLogueado;
@@ -28,7 +28,7 @@ public class VentanaModPerfil extends JFrame {
 
     private List<JTextField> cajasTexto;
 
-    public VentanaModPerfil(Usuario usuarioLogueado) {
+    public ModificarPerfil(Usuario usuarioLogueado) {
         this.usuarioLogueado = usuarioLogueado;
         modificadorDatosUsuario = new ModificadorDatosUsuario(usuarioLogueado);
 
@@ -36,7 +36,7 @@ public class VentanaModPerfil extends JFrame {
 
         this.setBounds(100, 60, 800, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Aerotaxis Un'kut");
+        setTitle("Aerotaxis PepePotamo");
         iniciarComponentesRegistro();
 
         cajasTexto = new ArrayList<JTextField>();
@@ -192,8 +192,8 @@ public class VentanaModPerfil extends JFrame {
         //Debemos crear el usuario y almacenarlo
         Usuario usuarioModificado = modificadorDatosUsuario.ModificarUsuario(cajaTextoNuevoNombre.getText(), cajaTextoNuevoApellido.getText(), cajaTextoNuevoDni.getText(), Integer.parseInt(cajaTextoNuevaEdad.getText()), cajaTextoNuevoCorreo.getText());
         this.dispose();
-        VentanaMenuUsuario ventanaMenuUsuario = new VentanaMenuUsuario(usuarioModificado);
-        ventanaMenuUsuario.setVisible(true);
+        MenuUsuario menuUsuario = new MenuUsuario(usuarioModificado);
+        menuUsuario.setVisible(true);
     }
 
     public void comprobarCamposVacios() {
@@ -238,14 +238,14 @@ public class VentanaModPerfil extends JFrame {
 
     public void botonCancelarClick(MouseEvent e) {
         this.dispose();
-        VentanaPerfil ventanaPerfil = new VentanaPerfil(usuarioLogueado);
-        ventanaPerfil.setVisible(true);
+        PerfilUsuario perfilUsuario = new PerfilUsuario(usuarioLogueado);
+        perfilUsuario.setVisible(true);
     }
 
     public static void main(String[] args) {
         Usuario usuario = new Usuario("Gonza", "Perez", "35789456", 45, "hola@gmail.com", "123456");
-        VentanaModPerfil ventanaModPerfil = new VentanaModPerfil(usuario);
-        ventanaModPerfil.setVisible(true);
+        ModificarPerfil modificarPerfil = new ModificarPerfil(usuario);
+        modificarPerfil.setVisible(true);
     }
 
 }

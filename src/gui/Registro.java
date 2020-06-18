@@ -1,6 +1,4 @@
-package Visual;
-
-import control.Registro;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class VentanaRegistro extends JFrame {
+public class Registro extends JFrame {
 
     private JPanel panelInicial;
     JTextField cajaTextoNuevoDni;
@@ -25,15 +23,15 @@ public class VentanaRegistro extends JFrame {
 
     List<JTextField> cajasTexto;
 
-    Registro registro;
+    control.Registro registro;
 
-    public VentanaRegistro() {
+    public Registro() {
 
-        registro = new Registro();
+        registro = new control.Registro();
 
         this.setBounds(100, 60, 800, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Aerotaxis Un'kut");
+        setTitle("Aerotaxis PepePotamo");
         iniciarComponentesRegistro();
 
         cajasTexto = new ArrayList<JTextField>();
@@ -197,13 +195,13 @@ public class VentanaRegistro extends JFrame {
     }
 
     public static void main(String[] args) {
-        VentanaRegistro ventania2 = new VentanaRegistro();
+        Registro ventania2 = new Registro();
         ventania2.setVisible(true);
     }
 
     public void botonLoginClick(MouseEvent e) {
         this.dispose();
-        VentanaIngreso ventana = new VentanaIngreso();
+        Login ventana = new Login();
         ventana.setVisible(true);
     }
 

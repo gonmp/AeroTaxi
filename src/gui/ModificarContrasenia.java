@@ -1,16 +1,16 @@
-package Visuales;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class VentanaModContraseña extends JFrame {
+public class ModificarContrasenia extends JFrame {
 
     private JPanel panelInicial;
 
-    public VentanaModContraseña(){
+    public ModificarContrasenia(){
         this.setBounds(100, 60, 450, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Aerotaxis Un'kut");
+        setTitle("Aerotaxis PepePotamo");
         iniciarComponentesIngreso();
     }
 

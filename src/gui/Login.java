@@ -1,6 +1,5 @@
-package Visual;
+package gui;
 
-import control.Login;
 import modelos.Usuario;
 
 import javax.swing.*;
@@ -8,10 +7,10 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class VentanaIngreso extends JFrame {
+public class Login extends JFrame {
 
     private JPanel panelInicial;
-    private Login login;
+    private control.Login login;
     private Usuario usuarioLoguar;
 
     JTextField cajaTextoDni;
@@ -19,12 +18,12 @@ public class VentanaIngreso extends JFrame {
 
     JLabel etiquetaError;
 
-    public VentanaIngreso(){
+    public Login(){
         this.setBounds(100, 60, 800, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Aerotaxis Un'kut");
+        setTitle("Aerotaxis PepePotamo");
         iniciarComponentesIngreso();
-        login = new Login();
+        login = new control.Login();
     }
 
 
@@ -49,7 +48,7 @@ public class VentanaIngreso extends JFrame {
 
     private void colocarEtiquetas(){
 
-        JLabel saludoInicial = new JLabel("Bienvenido a aerotaxis Un'Kut");
+        JLabel saludoInicial = new JLabel("Bienvenido a aerotaxis PepePotamo");
         saludoInicial.setBounds(155, 50, 1000, 100);
         saludoInicial.setFont(new Font("Comic Sans MS", Font.PLAIN, 35));
         panelInicial.add(saludoInicial);
@@ -138,13 +137,13 @@ public class VentanaIngreso extends JFrame {
         //Loguear al usuario
         System.out.println(usuarioLoguar.toString());
         this.dispose();
-        VentanaMenuUsuario ventanaMenuUsuario = new VentanaMenuUsuario(usuarioLoguar);
-        ventanaMenuUsuario.setVisible(true);
+        MenuUsuario menuUsuario = new MenuUsuario(usuarioLoguar);
+        menuUsuario.setVisible(true);
     }
 
     public void botonRegistrarseClick(MouseEvent e) {
         this.dispose();
-        VentanaRegistro ventana = new VentanaRegistro();
+        Registro ventana = new Registro();
         ventana.setVisible(true);
     }
 
@@ -153,7 +152,7 @@ public class VentanaIngreso extends JFrame {
     }
 
     public static void main(String[] args) {
-        VentanaIngreso ventania = new VentanaIngreso();
+        Login ventania = new Login();
         ventania.setVisible(true);
     }
 

@@ -1,4 +1,4 @@
-package Visual;
+package gui;
 
 import modelos.Usuario;
 
@@ -7,16 +7,16 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class VentanaPerfil extends JFrame {
+public class PerfilUsuario extends JFrame {
 
     private JPanel panelInicial;
     private Usuario usuarioLogueado;
 
-    public VentanaPerfil(Usuario usuarioLogueado) {
+    public PerfilUsuario(Usuario usuarioLogueado) {
         this.usuarioLogueado = usuarioLogueado;
         this.setBounds(100, 60, 800, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Aerotaxis Un'kut");
+        setTitle("Aerotaxis PepePotamo");
         iniciarComponentesRegistro();
 
     }
@@ -144,14 +144,14 @@ public class VentanaPerfil extends JFrame {
 
     public void botonAtrasClick(MouseEvent e) {
         this.dispose();
-        VentanaMenuUsuario ventanaMenuUsuario = new VentanaMenuUsuario(usuarioLogueado);
-        ventanaMenuUsuario.setVisible(true);
+        MenuUsuario menuUsuario = new MenuUsuario(usuarioLogueado);
+        menuUsuario.setVisible(true);
     }
 
     public void botonModificarDatosClick(MouseEvent e) {
         this.dispose();
-        VentanaModPerfil ventanaModPerfil = new VentanaModPerfil(usuarioLogueado);
-        ventanaModPerfil.setVisible(true);
+        ModificarPerfil modificarPerfil = new ModificarPerfil(usuarioLogueado);
+        modificarPerfil.setVisible(true);
     }
 
     /*private void colocarRadioBotones(){

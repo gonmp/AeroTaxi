@@ -1,19 +1,19 @@
-package Visuales;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class VentanaSolicitud extends JFrame {
+public class Reservar extends JFrame {
 
     private JPanel panelInicial;
 
     private String[] origenes = {"Buenos Aires", "Cordoba", "Santiago", "Montevideo"};
     private String[] destinos = {"Buenos Aires", "Cordoba", "Santiago", "Montevideo"};
 
-    public VentanaSolicitud(){
+    public Reservar(){
         this.setBounds(100, 60, 800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Aerotaxis Un'kut");
+        setTitle("Aerotaxis PepePotamo");
         iniciarComponentesSolicitud();
     }
 
@@ -140,4 +140,9 @@ public class VentanaSolicitud extends JFrame {
             panelInicial.add(listadoVuelos);
 
         }
+
+    public static void main(String[] args) {
+        Reservar reservar = new Reservar();
+        reservar.setVisible(true);
+    }
 }

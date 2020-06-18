@@ -1,16 +1,22 @@
-package Visuales;
+package gui;
+
+import modelos.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class VentanaMenuUsuario extends JFrame {
+public class MenuUsuario extends JFrame {
 
     private JPanel panelInicial;
+    private Usuario usuarioLogueado;
 
-    public VentanaMenuUsuario(){
+    public MenuUsuario(Usuario usuarioLogueado){
+        this.usuarioLogueado = usuarioLogueado;
         this.setBounds(100, 60, 450, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Aerotaxis Un'kut");
+        setTitle("Aerotaxis PepePotamo");
         iniciarComponentesIngreso();
     }
 
@@ -31,7 +37,7 @@ public class VentanaMenuUsuario extends JFrame {
 
     private void colocarEtiquetas(){
 
-        JLabel titulo = new JLabel("Bienvenide :");
+        JLabel titulo = new JLabel("Bienvenido/a " + usuarioLogueado.getNombre());
         titulo.setBounds(15, 1, 400, 50);
         titulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
         panelInicial.add(titulo);
@@ -52,12 +58,36 @@ public class VentanaMenuUsuario extends JFrame {
         JButton botonPerfil = new JButton("Mi Perfil");
         botonPerfil.setBounds(25, 170, 160, 60);
         botonPerfil.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonPerfil.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonPerfilClick(e);
+            }
+        });
         panelInicial.add(botonPerfil);
 
         JButton botonDesconectar = new JButton("Desconectar");
         botonDesconectar.setBounds(250, 170, 160, 60);
         botonDesconectar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonDesconectar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonDesconectarClick(e);
+            }
+        });
         panelInicial.add(botonDesconectar);
+    }
+
+    public void botonPerfilClick (MouseEvent e) {
+        this.dispose();
+        PerfilUsuario perfilUsuario = new PerfilUsuario(usuarioLogueado);
+        perfilUsuario.setVisible(true);
+    }
+
+    public void botonDesconectarClick(MouseEvent e) {
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
     }
 
 }
