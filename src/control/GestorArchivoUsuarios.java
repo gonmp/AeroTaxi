@@ -80,5 +80,15 @@ public class GestorArchivoUsuarios {
         }
     }
 
+    public int devolverUltimosId(){
+        int ultimoId = 1;
+        Iterator<Usuario> iteradorUsuario = usuarios.iterator();
+        Usuario aux;
+        while(iteradorUsuario.hasNext()) {
+            aux = iteradorUsuario.next();
+            ultimoId = aux.getId();
+        }
+        return  ultimoId;
+    }
 
 }

@@ -1,7 +1,9 @@
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
-    private static int idGlobal = 1;
     private int id;
     private String nombre;
     private String apellido;
@@ -11,9 +13,8 @@ public class Usuario {
     private String contrasenia;
     private boolean admin;
 
-    public Usuario(String nombre, String apellido, String dni, int edad, String email, String contrasenia) {
-        this.id = idGlobal;
-        idGlobal++;
+    public Usuario(int id, String nombre, String apellido, String dni, int edad, String email, String contrasenia) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;

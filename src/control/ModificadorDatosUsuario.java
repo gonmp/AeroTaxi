@@ -12,7 +12,7 @@ public class ModificadorDatosUsuario {
     }
 
     public Usuario ModificarUsuario(String nombre, String apellido, String dni, int edad, String email) {
-        Usuario nuevoUsuario = new Usuario(nombre, apellido, dni, edad, email, usuarioModificar.getContrasenia());
+        Usuario nuevoUsuario = new Usuario(1, nombre, apellido, dni, edad, email, usuarioModificar.getContrasenia());
         gestorArchivoUsuarios.reemplazarUsuario(gestorArchivoUsuarios.buscarIndexUsuario(usuarioModificar.getDni()), nuevoUsuario);
 
         return nuevoUsuario;

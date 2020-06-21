@@ -14,12 +14,8 @@ import java.util.List;
 
 public class Login {
 
-    private Gson gson;
+    //private Gson gson;
     private GestorArchivoUsuarios gestorArchivoUsuarios = new GestorArchivoUsuarios();
-
-    public Login() {
-        gson = new Gson();
-    }
 
     public Usuario buscarUsuario(String dni) {
         Usuario usuarioBuscado = gestorArchivoUsuarios.buscarUsuario(dni);

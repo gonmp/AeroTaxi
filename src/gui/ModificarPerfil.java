@@ -243,7 +243,7 @@ public class ModificarPerfil extends JFrame {
     }
 
     public static void main(String[] args) {
-        Usuario usuario = new Usuario("Gonza", "Perez", "35789456", 45, "hola@gmail.com", "123456");
+        Usuario usuario = new Usuario(1, "Gonza", "Perez", "35789456", 45, "hola@gmail.com", "123456");
         ModificarPerfil modificarPerfil = new ModificarPerfil(usuario);
         modificarPerfil.setVisible(true);
     }

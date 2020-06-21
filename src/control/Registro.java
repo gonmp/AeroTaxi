@@ -31,8 +31,7 @@ public class Registro {
     }
 
     public Usuario crearUsuario(String nombre, String apellido, String dni, int edad, String email, String contrasenia) {
-
-        Usuario nuevoUsuario = new Usuario(nombre, apellido, dni, edad, email, contrasenia);
+        Usuario nuevoUsuario = new Usuario(1, nombre, apellido, dni, edad, email, contrasenia);
         return nuevoUsuario;
     }
 

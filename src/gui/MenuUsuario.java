@@ -48,6 +48,12 @@ public class MenuUsuario extends JFrame {
         JButton botonReservar = new JButton("Nueva reserva");
         botonReservar.setBounds(25, 70, 160, 60);
         botonReservar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonReservar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonReservarClick(e);
+            }
+        });
         panelInicial.add(botonReservar);
 
         JButton botonGestionar = new JButton("Mis reservas");
@@ -82,6 +88,12 @@ public class MenuUsuario extends JFrame {
         this.dispose();
         PerfilUsuario perfilUsuario = new PerfilUsuario(usuarioLogueado);
         perfilUsuario.setVisible(true);
+    }
+
+    public void botonReservarClick(MouseEvent e) {
+        this.dispose();
+        Reservar reservar = new Reservar(usuarioLogueado);
+        reservar.setVisible(true);
     }
 
     public void botonDesconectarClick(MouseEvent e) {
