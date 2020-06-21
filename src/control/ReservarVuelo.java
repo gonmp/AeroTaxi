@@ -10,7 +10,7 @@ public class ReservarVuelo {
     GestorArchivoAviones gestorArchivoAviones;
     //Usuario usuarioLogueado;
 
-    public ReservarVuelo(Usuario usuarioLogueado) {
+    public ReservarVuelo() {
         gestorArchivoReservas = new GestorArchivoReservas();
         gestorArchivoAviones = new GestorArchivoAviones();
         //this.usuarioLogueado = usuarioLogueado;
@@ -42,5 +42,9 @@ public class ReservarVuelo {
         int id = gestorArchivoReservas.devolverUltimosId() + 1;
         Reserva nuevaReserva = new Reserva(id, anio, mes, dia, hora, pasajeros, origen, destino, usuario, avion);
         return nuevaReserva;
+    }
+
+    public ArrayList<Reserva> filtrarReservasDeUsuario(Usuario usuario) {
+        return gestorArchivoReservas.filtrarReservaDeUsuario(usuario);
     }
 }

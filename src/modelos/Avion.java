@@ -160,6 +160,23 @@ public class Avion {
         return false;
     }
 
+    public boolean equals(Object o) {
+        if(o == this) {
+            return true;
+        }
+        if(!(o instanceof Avion)) {
+            return false;
+        }
+        Avion avion = (Avion) o;
+        return avion.getId() == id;
+    }
+
+    public int hashCode() {
+        int result = Integer.hashCode(id);
+        result = 31 * result;
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Avion{" +

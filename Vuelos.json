@@ -1,1 +1,97 @@
-[{"id":2,"fecha":{"year":2020,"month":7,"dayOfMonth":5,"hourOfDay":2,"minute":0,"second":0},"pasajeros":1,"origen":"BUENOS_AIRES","destino":"CORDOBA","costoDeVuelo":110750,"distancia":695,"usuario":{"id":1,"nombre":"Pepe","apellido":"Gomez","dni":"35123456","edad":29,"email":"pepegomez@gmail.com","contrasenia":"123456","admin":false},"avion":{"id":1,"categoria":"BRONZE","capacidadCombustible":200,"costoPorKilometro":150,"capacidadPasajeros":5,"velocidadMaxima":200,"propulsion":"MOTOR_A_HELICE","wifi":false,"catering":false,"tarifa":3000,"fechasReservado":[]}}]
+[
+  {
+    "id": 3,
+    "fecha": {
+      "year": 2021,
+      "month": 3,
+      "dayOfMonth": 17,
+      "hourOfDay": 1,
+      "minute": 0,
+      "second": 0
+    },
+    "pasajeros": 1,
+    "origen": "BUENOS_AIRES",
+    "destino": "CORDOBA",
+    "costoDeVuelo": 131125,
+    "distancia": 695,
+    "usuario": {
+      "id": 1,
+      "nombre": "Pepe",
+      "apellido": "Gomez",
+      "dni": "35123456",
+      "edad": 29,
+      "email": "pepegomez@gmail.com",
+      "contrasenia": "123456",
+      "admin": false
+    },
+    "avion": {
+      "id": 3,
+      "categoria": "GOLD",
+      "capacidadCombustible": 250,
+      "costoPorKilometro": 175,
+      "capacidadPasajeros": 7,
+      "velocidadMaxima": 200,
+      "propulsion": "MOTOR_A_HELICE",
+      "wifi": false,
+      "catering": false,
+      "tarifa": 6000,
+      "fechasReservado": []
+    }
+  },
+  {
+    "id": 5,
+    "fecha": {
+      "year": 2020,
+      "month": 6,
+      "dayOfMonth": 31,
+      "hourOfDay": 17,
+      "minute": 0,
+      "second": 0
+    },
+    "pasajeros": 2,
+    "origen": "BUENOS_AIRES",
+    "destino": "CORDOBA",
+    "costoDeVuelo": 134625,
+    "distancia": 695,
+    "usuario": {
+      "id": 1,
+      "nombre": "Pepe",
+      "apellido": "Gomez",
+      "dni": "35123456",
+      "edad": 29,
+      "email": "pepegomez@gmail.com",
+      "contrasenia": "123456",
+      "admin": false
+    },
+    "avion": {
+      "id": 3,
+      "categoria": "GOLD",
+      "capacidadCombustible": 250,
+      "costoPorKilometro": 175,
+      "capacidadPasajeros": 7,
+      "velocidadMaxima": 200,
+      "propulsion": "MOTOR_A_HELICE",
+      "wifi": false,
+      "catering": false,
+      "tarifa": 6000,
+      "fechasReservado": [
+        {
+          "year": 2021,
+          "month": 3,
+          "dayOfMonth": 17,
+          "hourOfDay": 1,
+          "minute": 0,
+          "second": 0
+        },
+        {
+          "year": 2020,
+          "month": 5,
+          "dayOfMonth": 22,
+          "hourOfDay": 0,
+          "minute": 0,
+          "second": 0
+        }
+      ]
+    }
+  }
+]

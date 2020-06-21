@@ -1,6 +1,7 @@
 package control;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import modelos.Avion;
@@ -23,7 +24,7 @@ public class GestorArchivoAviones {
     private Gson gson;
 
     public GestorArchivoAviones() {
-        gson = new Gson();
+        gson = new GsonBuilder().setPrettyPrinting().create();
         leerAviones();
     }
 

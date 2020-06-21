@@ -95,4 +95,21 @@ public class Usuario {
                 ", contrasenia='" + contrasenia + '\'' +
                 '}';
     }
+
+    public boolean equals(Object o) {
+        if(o == this) {
+            return true;
+        }
+        if(!(o instanceof Usuario)) {
+            return false;
+        }
+        Usuario usuario = (Usuario) o;
+        return usuario.getId() == id;
+    }
+
+    public int hashCode() {
+        int result = Integer.hashCode(id);
+        result = 31 * result;
+        return result;
+    }
 }

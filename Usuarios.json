@@ -1,1 +1,12 @@
-[{"id":1,"nombre":"Pepe","apellido":"Gomez","dni":"35123456","edad":29,"email":"pepegomez@gmail.com","contrasenia":"123456","admin":false}]
+[
+  {
+    "id": 1,
+    "nombre": "Pepe",
+    "apellido": "Gomez",
+    "dni": "35123456",
+    "edad": 29,
+    "email": "pepegomez@gmail.com",
+    "contrasenia": "123456",
+    "admin": false
+  }
+]

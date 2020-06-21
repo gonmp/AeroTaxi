@@ -82,7 +82,7 @@ public class Reservar extends JFrame {
 
         completarAnios();
 
-        reservarVuelo = new ReservarVuelo(usuarioLogueado);
+        reservarVuelo = new ReservarVuelo();
 
         this.setBounds(100, 60, 800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -192,6 +192,7 @@ public class Reservar extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 if(reservaSeleccionada != null) {
                     reservarVuelo.reservarVuelo(reservaSeleccionada);
+                    botonConfirmarClick(e);
                 }
             }
         });
@@ -719,16 +720,32 @@ public class Reservar extends JFrame {
         while(reservaIterator.hasNext()) {
             aux = reservaIterator.next();
             fila[0] = aux.getAvion().getCategoria();
-            fila[1] = aux.getAvion().tieneWifi();
-            fila[2] = aux.getAvion().tieneCatering();
+            fila[1] = convertirBooleanAString(aux.getAvion().tieneWifi());
+            fila[2] = convertirBooleanAString(aux.getAvion().tieneCatering());
             fila[3] = aux.calcularCosto();
             model.addRow(fila);
             i++;
         }
     }
 
+    public String convertirBooleanAString(boolean dato) {
+        String booleano = "";
+        if(dato) {
+            booleano = "SI";
+        } else {
+            booleano = "NO";
+        }
+        return booleano;
+    }
+
     public void limpiarTabla() {
         model.setRowCount(0);
+    }
+
+    public void botonConfirmarClick(MouseEvent e) {
+        this.dispose();
+        ReservaExitosa reservaExitosa = new ReservaExitosa(usuarioLogueado);
+        reservaExitosa.setVisible(true);
     }
 
     public static void main(String[] args) {

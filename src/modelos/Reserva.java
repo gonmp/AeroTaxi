@@ -16,7 +16,7 @@ public class Reserva {
     Usuario usuario;
     Avion avion;
 
-    public Reserva(int id, int anio, int mes, int hora, int dia, int pasajeros, Ciudad origen, Ciudad destino, Usuario usuario, Avion avion) {
+    public Reserva(int id, int anio, int mes, int dia, int hora, int pasajeros, Ciudad origen, Ciudad destino, Usuario usuario, Avion avion) {
         this.id = id;
         this.fecha = Calendar.getInstance();
         fecha.set(anio, mes, dia, hora, 0, 0);
@@ -135,6 +135,23 @@ public class Reserva {
         }
 
         return distancia;
+    }
+
+    public boolean equals(Object o) {
+        if(o == this) {
+            return true;
+        }
+        if(!(o instanceof Reserva)) {
+            return false;
+        }
+        Reserva reserva = (Reserva) o;
+        return reserva.getId() == id;
+    }
+
+    public int hashCode() {
+        int result = Integer.hashCode(id);
+        result = 31 * result;
+        return result;
     }
 
     @Override

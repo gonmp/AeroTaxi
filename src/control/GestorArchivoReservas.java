@@ -1,10 +1,12 @@
 package control;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import modelos.Avion;
 import modelos.Reserva;
+import modelos.Usuario;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,7 +22,7 @@ public class GestorArchivoReservas {
     private Gson gson;
 
     public GestorArchivoReservas() {
-        gson = new Gson();
+        gson = new GsonBuilder().setPrettyPrinting().create();
         leerReservas();
     }
 
@@ -91,5 +93,18 @@ public class GestorArchivoReservas {
             ultimoId = aux.getId();
         }
         return  ultimoId;
+    }
+
+    public ArrayList<Reserva> filtrarReservaDeUsuario(Usuario usuario) {
+        List<Reserva> reservasDeUsuario = new ArrayList<Reserva>();
+        Iterator<Reserva> iteradorReservas = reservas.iterator();
+        Reserva aux;
+        while(iteradorReservas.hasNext()) {
+            aux = iteradorReservas.next();
+            if(aux.getUsuario().equals(usuario)) {
+                reservasDeUsuario.add(aux);
+            }
+        }
+        return (ArrayList<Reserva>) reservasDeUsuario;
     }
 }

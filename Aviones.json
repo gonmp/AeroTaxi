@@ -1,1 +1,71 @@
-[{"id":1,"categoria":"BRONZE","capacidadCombustible":200,"costoPorKilometro":150,"capacidadPasajeros":5,"velocidadMaxima":200,"propulsion":"MOTOR_A_HELICE","wifi":false,"catering":false,"tarifa":3000,"fechasReservado":[{"year":2020,"month":7,"dayOfMonth":5,"hourOfDay":2,"minute":0,"second":0}]},{"id":2,"categoria":"SILVER","capacidadCombustible":350,"costoPorKilometro":200,"capacidadPasajeros":8,"velocidadMaxima":250,"propulsion":"MOTOR_A_PISTONES","wifi":false,"catering":false,"tarifa":4000,"fechasReservado":[]},{"id":3,"categoria":"GOLD","capacidadCombustible":250,"costoPorKilometro":175,"capacidadPasajeros":7,"velocidadMaxima":200,"propulsion":"MOTOR_A_HELICE","wifi":false,"catering":false,"tarifa":6000,"fechasReservado":[]},{"id":4,"categoria":"BRONZE","capacidadCombustible":200,"costoPorKilometro":150,"capacidadPasajeros":5,"velocidadMaxima":200,"propulsion":"MOTOR_A_HELICE","wifi":false,"catering":false,"tarifa":3000,"fechasReservado":[]}]
+[
+  {
+    "id": 1,
+    "categoria": "BRONZE",
+    "capacidadCombustible": 200,
+    "costoPorKilometro": 150,
+    "capacidadPasajeros": 5,
+    "velocidadMaxima": 200,
+    "propulsion": "MOTOR_A_HELICE",
+    "wifi": false,
+    "catering": false,
+    "tarifa": 3000,
+    "fechasReservado": []
+  },
+  {
+    "id": 2,
+    "categoria": "SILVER",
+    "capacidadCombustible": 350,
+    "costoPorKilometro": 200,
+    "capacidadPasajeros": 8,
+    "velocidadMaxima": 250,
+    "propulsion": "MOTOR_A_PISTONES",
+    "wifi": false,
+    "catering": false,
+    "tarifa": 4000,
+    "fechasReservado": []
+  },
+  {
+    "id": 3,
+    "categoria": "GOLD",
+    "capacidadCombustible": 250,
+    "costoPorKilometro": 175,
+    "capacidadPasajeros": 7,
+    "velocidadMaxima": 200,
+    "propulsion": "MOTOR_A_HELICE",
+    "wifi": false,
+    "catering": false,
+    "tarifa": 6000,
+    "fechasReservado": [
+      {
+        "year": 2021,
+        "month": 3,
+        "dayOfMonth": 17,
+        "hourOfDay": 1,
+        "minute": 0,
+        "second": 0
+      },
+      {
+        "year": 2020,
+        "month": 6,
+        "dayOfMonth": 31,
+        "hourOfDay": 17,
+        "minute": 0,
+        "second": 0
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "categoria": "BRONZE",
+    "capacidadCombustible": 200,
+    "costoPorKilometro": 150,
+    "capacidadPasajeros": 5,
+    "velocidadMaxima": 200,
+    "propulsion": "MOTOR_A_HELICE",
+    "wifi": false,
+    "catering": false,
+    "tarifa": 3000,
+    "fechasReservado": []
+  }
+]
