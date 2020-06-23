@@ -49,15 +49,15 @@
   },
   {
     "id": 4,
-    "categoria": "BRONZE",
-    "capacidadCombustible": 200,
-    "costoPorKilometro": 150,
-    "capacidadPasajeros": 5,
-    "velocidadMaxima": 200,
+    "categoria": "GOLD",
+    "capacidadCombustible": 123,
+    "costoPorKilometro": 300,
+    "capacidadPasajeros": 6,
+    "velocidadMaxima": 300,
     "propulsion": "MOTOR_A_HELICE",
-    "wifi": false,
-    "catering": false,
-    "tarifa": 3000,
+    "wifi": true,
+    "catering": true,
+    "tarifa": 6000,
     "fechasReservado": []
   }
 ]
