@@ -120,7 +120,7 @@ public class ReservasAdmin extends JFrame{
     private void colocarBotones(){
 
         botonEliminar = new JButton("Eliminar reserva");
-        botonEliminar.setBounds(90, 500, 120, 40);
+        botonEliminar.setBounds(350, 500, 200, 40);
         botonEliminar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         botonEliminar.setEnabled(false);
         botonEliminar.addMouseListener(new MouseAdapter() {
@@ -128,14 +128,14 @@ public class ReservasAdmin extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 if(reservaSeleccionada != null) {
                     reservarVuelo.eliminarReserva(reservaSeleccionada);
-                    botonModificarClick(e);
+                    botonEliminarClick(e);
                 }
             }
         });
         panelInicial.add(botonEliminar);
 
         JButton botonAtras = new JButton("Atras");
-        botonAtras.setBounds(565, 500, 120, 40);
+        botonAtras.setBounds(750, 500, 120, 40);
         botonAtras.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         botonAtras.addMouseListener(new MouseAdapter() {
             @Override
@@ -257,10 +257,10 @@ public class ReservasAdmin extends JFrame{
         menuUsuario.setVisible(true);
     }
 
-    public void botonModificarClick(MouseEvent e) {
-        //this.dispose();
-        //ModificarPerfilAdmin modificarPerfilAdmin = new ModificarPerfilAdmin(usuarioLogueado, usuarioSeleccionado);
-        //modificarPerfilAdmin.setVisible(true);
+    public void botonEliminarClick(MouseEvent e) {
+        this.dispose();
+        ReservaEliminada modificarPerfilAdmin = new ReservaEliminada(usuarioLogueado);
+        modificarPerfilAdmin.setVisible(true);
     }
 
     public String convertirBooleanAString(boolean dato) {

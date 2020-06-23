@@ -41,6 +41,15 @@ public class GestorArchivoAviones {
         return avionBuscado;
     }
 
+    public void eliminarAvion(Avion avion) {
+        aviones.remove(avion);
+        try (FileWriter writer = new FileWriter(ArchivoDatos.archivoAviones)) {
+            gson.toJson(aviones, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void reemplazarAvion(int index, Avion nuevoAvion) {
         aviones.set(index, nuevoAvion);
         try (FileWriter writer = new FileWriter(ArchivoDatos.archivoAviones)) {

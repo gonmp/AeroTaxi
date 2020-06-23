@@ -84,21 +84,22 @@ public class AvionesAdmin extends JFrame{
     private void colocarBotones(){
 
         botonEliminar = new JButton("Eliminar avión");
-        botonEliminar.setBounds(90, 400, 120, 40);
+        botonEliminar.setBounds(350, 400, 200, 40);
         botonEliminar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         botonEliminar.setEnabled(false);
         botonEliminar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(avionSeleccionado != null) {
-                    botonModificarClick(e);
+                    datosAvion.eleminarAvion(avionSeleccionado);
+                    botonEliminarClick(e);
                 }
             }
         });
         panelInicial.add(botonEliminar);
 
         JButton botonAtras = new JButton("Atrás");
-        botonAtras.setBounds(565, 400, 120, 40);
+        botonAtras.setBounds(750, 400, 120, 40);
         botonAtras.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         botonAtras.addMouseListener(new MouseAdapter() {
             @Override
@@ -171,10 +172,10 @@ public class AvionesAdmin extends JFrame{
         menuUsuario.setVisible(true);
     }
 
-    public void botonModificarClick(MouseEvent e) {
-        //this.dispose();
-        //ModificarPerfilAdmin modificarPerfilAdmin = new ModificarPerfilAdmin(usuarioLogueado, avionSeleccionado);
-        //modificarPerfilAdmin.setVisible(true);
+    public void botonEliminarClick(MouseEvent e) {
+        this.dispose();
+        AvionEliminado avionEliminado = new AvionEliminado(usuarioLogueado);
+        avionEliminado.setVisible(true);
     }
 
     public String convertirBooleanAString(boolean dato) {

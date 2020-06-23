@@ -7,11 +7,11 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ReservaEliminada extends JFrame{
+public class AvionAgregadoExito extends JFrame{
     private JPanel panelInicial;
     private Usuario usuarioLogueado;
 
-    public ReservaEliminada(Usuario usuarioLogueado) {
+    public AvionAgregadoExito(Usuario usuarioLogueado) {
         this.usuarioLogueado = usuarioLogueado;
         this.setBounds(100, 60, 300, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -32,7 +32,7 @@ public class ReservaEliminada extends JFrame{
     }
 
     private void colocarEtiquetas(){
-        JLabel titulo = new JLabel("La reserva fue eliminada");
+        JLabel titulo = new JLabel("El avión fue agregado con éxito");
         titulo.setBounds(15, 1, 400, 50);
         titulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
         panelInicial.add(titulo);
@@ -52,14 +52,8 @@ public class ReservaEliminada extends JFrame{
     }
 
     public void botonAceptarClick(MouseEvent e) {
-        if(usuarioLogueado.isAdmin()) {
-            this.dispose();
-            MenuAdmin menuAdmin = new MenuAdmin(usuarioLogueado);
-            menuAdmin.setVisible(true);
-        } else {
-            this.dispose();
-            MenuUsuario menuUsuario = new MenuUsuario(usuarioLogueado);
-            menuUsuario.setVisible(true);
-        }
+        this.dispose();
+        MenuAdmin menuAdmin = new MenuAdmin(usuarioLogueado);
+        menuAdmin.setVisible(true);
     }
 }

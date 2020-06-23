@@ -50,7 +50,7 @@ public class MenuAdmin extends JFrame {
         botonUsuarios.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //botonUsuariosClick(e);
+                botonUsuariosClick(e);
             }
         });
         panelInicial.add(botonUsuarios);
@@ -61,7 +61,7 @@ public class MenuAdmin extends JFrame {
         botonReservas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //botonReservasClick(e);
+                botonReservasClick(e);
             }
         });
         panelInicial.add(botonReservas);
@@ -72,7 +72,7 @@ public class MenuAdmin extends JFrame {
         botonAviones.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //botonAvionesClick(e);
+                botonAvionesClick(e);
             }
         });
         panelInicial.add(botonAviones);
@@ -83,7 +83,7 @@ public class MenuAdmin extends JFrame {
         botonAgregarAvion.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //botonAgregarAvionClick(e);
+                botonAgregarAvionClick(e);
             }
         });
         panelInicial.add(botonAgregarAvion);
@@ -113,14 +113,14 @@ public class MenuAdmin extends JFrame {
 
     public void botonAvionesClick (MouseEvent e) {
         this.dispose();
-        PerfilUsuario perfilUsuario = new PerfilUsuario(usuarioLogueado);
-        perfilUsuario.setVisible(true);
+        AvionesAdmin avionesAdmin = new AvionesAdmin(usuarioLogueado);
+        avionesAdmin.setVisible(true);
     }
 
     public void botonAgregarAvionClick(MouseEvent e) {
         this.dispose();
-        PerfilUsuario perfilUsuario = new PerfilUsuario(usuarioLogueado);
-        perfilUsuario.setVisible(true);
+        AgregarAvionAdmin agregarAvionAdmin = new AgregarAvionAdmin(usuarioLogueado);
+        agregarAvionAdmin.setVisible(true);
     }
 
     public void botonPerfilClick (MouseEvent e) {
@@ -131,13 +131,13 @@ public class MenuAdmin extends JFrame {
 
     public void botonUsuariosClick(MouseEvent e) {
         this.dispose();
-        Reservar reservar = new Reservar(usuarioLogueado);
-        reservar.setVisible(true);
+        UsuariosAdmin usuariosAdmin = new UsuariosAdmin(usuarioLogueado);
+        usuariosAdmin.setVisible(true);
     }
 
     public void botonReservasClick(MouseEvent e) {
         this.dispose();
-        Reservas reservas = new Reservas(usuarioLogueado);
+        ReservasAdmin reservas = new ReservasAdmin(usuarioLogueado);
         reservas.setVisible(true);
     }
 

@@ -1,31 +1,21 @@
 [
   {
-    "id": 1,
-    "nombre": "Pepe",
-    "apellido": "Gomez",
-    "dni": "35123456",
-    "edad": 28,
-    "email": "pepegomez@gmail.com",
-    "contrasenia": "123456",
-    "admin": false
-  },
-  {
-    "id": 1,
-    "nombre": "Juana",
-    "apellido": "Gonzalez",
-    "dni": "35123457",
-    "edad": 27,
-    "email": "juanagonzalez@gmail.com",
-    "contrasenia": "123457",
-    "admin": false
-  },
-  {
     "id": 2,
-    "nombre": "Nicolas",
-    "apellido": "Passalacqua",
-    "dni": "35789456",
-    "edad": 54,
-    "email": "nico@gmail.com",
+    "nombre": "Pepe",
+    "apellido": "Potamo",
+    "dni": "35111111",
+    "edad": 29,
+    "email": "pepepotamo@gmail.com",
+    "contrasenia": "123456",
+    "admin": true
+  },
+  {
+    "id": 3,
+    "nombre": "Ailen",
+    "apellido": "Armanelli",
+    "dni": "35222222",
+    "edad": 29,
+    "email": "aarmanelli@gmail.com",
     "contrasenia": "123456",
     "admin": false
   }

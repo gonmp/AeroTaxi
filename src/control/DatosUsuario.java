@@ -13,11 +13,24 @@ public class DatosUsuario {
         gestorArchivoUsuarios = new GestorArchivoUsuarios();
     }
 
-    public Usuario ModificarUsuario(Usuario usuarioModificar, String nombre, String apellido, String dni, int edad, String email) {
-        Usuario nuevoUsuario = new Usuario(1, nombre, apellido, dni, edad, email, usuarioModificar.getContrasenia());
+    public Usuario modificarUsuario(Usuario usuarioModificar, String nombre, String apellido, String dni, int edad, String email) {
+        Usuario nuevoUsuario = new Usuario(usuarioModificar.getId(), nombre, apellido, dni, edad, email, usuarioModificar.getContrasenia());
         gestorArchivoUsuarios.reemplazarUsuario(gestorArchivoUsuarios.buscarIndexUsuario(usuarioModificar.getDni()), nuevoUsuario);
 
         return nuevoUsuario;
+    }
+
+    public Usuario modificarContrasenia(Usuario usuarioModificar, String nuevaContrasenia) {
+        Usuario nuevoUsuario = new Usuario(usuarioModificar.getId(), usuarioModificar.getNombre(), usuarioModificar.getApellido(), usuarioModificar.getDni(), usuarioModificar.getEdad(), usuarioModificar.getEmail(), nuevaContrasenia);
+        gestorArchivoUsuarios.reemplazarUsuario(gestorArchivoUsuarios.buscarIndexUsuario(usuarioModificar.getDni()), nuevoUsuario);
+
+        return nuevoUsuario;
+    }
+
+    public void hacerAdmin(Usuario usuarioModificar) {
+        usuarioModificar.setAdmin(true);
+        gestorArchivoUsuarios.reemplazarUsuario(gestorArchivoUsuarios.buscarIndexUsuario(usuarioModificar.getDni()), usuarioModificar);
+
     }
 
     public ArrayList<Usuario> listarTodosLosUsuarios() {

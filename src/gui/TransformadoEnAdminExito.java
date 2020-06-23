@@ -7,13 +7,13 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ReservaEliminada extends JFrame{
+public class TransformadoEnAdminExito extends JFrame {
     private JPanel panelInicial;
     private Usuario usuarioLogueado;
 
-    public ReservaEliminada(Usuario usuarioLogueado) {
+    public TransformadoEnAdminExito(Usuario usuarioLogueado) {
         this.usuarioLogueado = usuarioLogueado;
-        this.setBounds(100, 60, 300, 200);
+        this.setBounds(100, 60, 400, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Aerotaxis PepePotamo");
         iniciarComponentes();
@@ -32,7 +32,7 @@ public class ReservaEliminada extends JFrame{
     }
 
     private void colocarEtiquetas(){
-        JLabel titulo = new JLabel("La reserva fue eliminada");
+        JLabel titulo = new JLabel("El usuario se transformó en admin con éxito");
         titulo.setBounds(15, 1, 400, 50);
         titulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
         panelInicial.add(titulo);
@@ -52,14 +52,9 @@ public class ReservaEliminada extends JFrame{
     }
 
     public void botonAceptarClick(MouseEvent e) {
-        if(usuarioLogueado.isAdmin()) {
-            this.dispose();
-            MenuAdmin menuAdmin = new MenuAdmin(usuarioLogueado);
-            menuAdmin.setVisible(true);
-        } else {
-            this.dispose();
-            MenuUsuario menuUsuario = new MenuUsuario(usuarioLogueado);
-            menuUsuario.setVisible(true);
-        }
+        this.dispose();
+        UsuariosAdmin usuariosAdmin = new UsuariosAdmin(usuarioLogueado);
+        usuariosAdmin.setVisible(true);
     }
+
 }

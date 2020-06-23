@@ -29,6 +29,6 @@ public class DatosAvion {
     }
 
     public void eleminarAvion(Avion avion) {
-        //gestorArchivoAviones.e
+        gestorArchivoAviones.eliminarAvion(avion);
     }
 }

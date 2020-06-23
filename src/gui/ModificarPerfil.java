@@ -50,7 +50,6 @@ public class ModificarPerfil extends JFrame {
         colocarEtiquetas();
         colocarBotones();
         colocarCajasTexto();
-        colocarRadioBotones();
 
     }
 
@@ -171,6 +170,12 @@ public class ModificarPerfil extends JFrame {
     }
 
     public void botonConfirmarClick(MouseEvent e) {
+        if(hayCamposVacios()) {
+            etiquetaError.setText("Todos los campos deben estar completos");
+            return;
+        }
+
+
         if(!comprobarEmail()) {
             etiquetaError.setText("Debe ingresar un email valido");
             return;
@@ -190,16 +195,10 @@ public class ModificarPerfil extends JFrame {
         }
 
         //Debemos crear el usuario y almacenarlo
-        Usuario usuarioModificado = datosUsuario.ModificarUsuario(usuarioLogueado, cajaTextoNuevoNombre.getText(), cajaTextoNuevoApellido.getText(), cajaTextoNuevoDni.getText(), Integer.parseInt(cajaTextoNuevaEdad.getText()), cajaTextoNuevoCorreo.getText());
+        Usuario usuarioModificado = datosUsuario.modificarUsuario(usuarioLogueado, cajaTextoNuevoNombre.getText(), cajaTextoNuevoApellido.getText(), cajaTextoNuevoDni.getText(), Integer.parseInt(cajaTextoNuevaEdad.getText()), cajaTextoNuevoCorreo.getText());
         this.dispose();
         MenuUsuario menuUsuario = new MenuUsuario(usuarioModificado);
         menuUsuario.setVisible(true);
-    }
-
-    public void comprobarCamposVacios() {
-        if(hayCamposVacios()) {
-            etiquetaError.setText("Todos los campos deben estar completos");
-        }
     }
 
     public boolean hayCamposVacios() {

@@ -40,13 +40,10 @@ public class Registro extends JFrame {
     }
 
     private void iniciarComponentesRegistro(){
-
         colocarPanel();
         colocarEtiquetas();
         colocarBotones();
         colocarCajasTexto();
-        colocarRadioBotones();
-
     }
 
     private void colocarPanel(){
@@ -173,17 +170,6 @@ public class Registro extends JFrame {
 
     }
 
-    private void colocarRadioBotones(){
-
-        JRadioButton radioBotonAdmin = new JRadioButton("Juro que no soy un robot");
-        radioBotonAdmin.setBounds(15, 240, 200, 40);
-        panelInicial.add(radioBotonAdmin);
-
-        JRadioButton radioBotonTerminos = new JRadioButton("Acepto terminos y condiciones");
-        radioBotonTerminos.setBounds(15, 300, 200, 40);
-        panelInicial.add(radioBotonTerminos);
-    }
-
     public void crearArregloCajaTexto() {
         cajasTexto.add(cajaTextoNombre);
         cajasTexto.add(cajaTextoApellido);
@@ -236,16 +222,13 @@ public class Registro extends JFrame {
 
         //Debemos crear el usuario y almacenarlo
         registro.registrar(cajaTextoNombre.getText(), cajaTextoApellido.getText(), cajaTextoNuevoDni.getText(), Integer.parseInt(cajaTextoEdad.getText()), cajaTextoEmail.getText(), cajaTextoNuevaContrasenia.getText());
+        this.dispose();
+        RegistroExito registroExito = new RegistroExito();
+        registroExito.setVisible(true);
     }
 
     public void botonSalirClick(MouseEvent e) {
         System.exit(0);
-    }
-
-    public void comprobarCamposVacios() {
-        if(hayCamposVacios()) {
-            etiquetaError.setText("Todos los campos deben estar completos");
-        }
     }
 
     public boolean hayCamposVacios() {

@@ -121,7 +121,7 @@ public class AgregarAvionAdmin extends JFrame {
 
         etiquetaError = new JLabel();
         etiquetaError.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-        etiquetaError.setBounds(96, 614, 380, 26);
+        etiquetaError.setBounds(96, 614, 400, 26);
         etiquetaError.setForeground(Color.RED);
         contentPane.add(etiquetaError);
     }
@@ -183,6 +183,12 @@ public class AgregarAvionAdmin extends JFrame {
         JButton botonAtras = new JButton("Atr\u00E1s");
         botonAtras.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         botonAtras.setBounds(320, 676, 141, 34);
+        botonAtras.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonAtrasClick();
+            }
+        });
         contentPane.add(botonAtras);
     }
 
@@ -284,7 +290,15 @@ public class AgregarAvionAdmin extends JFrame {
         }
 
         datosAvion.agregarAvion(transformarCategoriaSeleccionada((String) listaCategorias.getSelectedItem()), Integer.parseInt(cajaCombustible.getText()), Integer.parseInt(cajaKilometros.getText()), (Integer) spinnerPasajeros.getValue(), Integer.parseInt(cajaVelocidad.getText()), transformarPropulsionSeleccionada((String) listaPropulsion.getSelectedItem()), convertirStringABooleano((String) listaWifi.getSelectedItem()), convertirStringABooleano((String) listaCatering.getSelectedItem()));
+        this.dispose();
+        AvionAgregadoExito avionAgregadoExito = new AvionAgregadoExito(usuarioLogueado);
+        avionAgregadoExito.setVisible(true);
+    }
 
+    public void botonAtrasClick() {
+        this.dispose();
+        MenuAdmin menuAdmin = new MenuAdmin(usuarioLogueado);
+        menuAdmin.setVisible(true);
     }
 
     public Ciudad transformarCiudadSeleccionada(String ciudadSeleccionada) {

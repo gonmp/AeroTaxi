@@ -22,7 +22,7 @@
     "propulsion": "MOTOR_A_PISTONES",
     "wifi": false,
     "catering": false,
-    "tarifa": 4000,
+    "tarifa": 4500,
     "fechasReservado": []
   },
   {
@@ -39,9 +39,9 @@
     "fechasReservado": [
       {
         "year": 2021,
-        "month": 5,
-        "dayOfMonth": 14,
-        "hourOfDay": 14,
+        "month": 3,
+        "dayOfMonth": 18,
+        "hourOfDay": 6,
         "minute": 0,
         "second": 0
       }
@@ -58,19 +58,6 @@
     "wifi": false,
     "catering": false,
     "tarifa": 3000,
-    "fechasReservado": []
-  },
-  {
-    "id": 5,
-    "categoria": "GOLD",
-    "capacidadCombustible": 200,
-    "costoPorKilometro": 150,
-    "capacidadPasajeros": 7,
-    "velocidadMaxima": 300,
-    "propulsion": "MOTOR_A_PISTONES",
-    "wifi": true,
-    "catering": true,
-    "tarifa": 6000,
     "fechasReservado": []
   }
 ]

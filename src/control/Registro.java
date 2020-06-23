@@ -48,7 +48,8 @@ public class Registro {
     public static void main(String[] args) {
 
         Registro registro = new Registro();
-        Usuario nuevoUsuario = registro.crearUsuario("Gonzalo", "Perelstein", "78945611", 29, "gonzaperelsteinl@gmail.com", "123456");
+        Usuario nuevoUsuario = registro.crearUsuario("Pepe", "Potamo", "35111111", 29, "pepepotamo@gmail.com", "123456");
+        nuevoUsuario.setAdmin(true);
         registro.registrarUsuario(nuevoUsuario);
         //Usuario nuevoUsuarionew = new Usuario("Juan", "Perelstein", "35971937", 29, "gmperelstein@gmail.com", "123456");
 

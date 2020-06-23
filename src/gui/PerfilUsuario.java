@@ -138,14 +138,26 @@ public class PerfilUsuario extends JFrame {
         JButton botonCambiarContraseña= new JButton("Cambiar contraseña");
         botonCambiarContraseña.setBounds(400, 400, 220, 40);
         botonCambiarContraseña.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonCambiarContraseña.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cambiarContraseniaClick();
+            }
+        });
         panelInicial.add(botonCambiarContraseña);
 
     }
 
     public void botonAtrasClick(MouseEvent e) {
-        this.dispose();
-        MenuUsuario menuUsuario = new MenuUsuario(usuarioLogueado);
-        menuUsuario.setVisible(true);
+        if(usuarioLogueado.isAdmin()) {
+            this.dispose();
+            MenuAdmin menuAdmin = new MenuAdmin(usuarioLogueado);
+            menuAdmin.setVisible(true);
+        } else {
+            this.dispose();
+            MenuUsuario menuUsuario = new MenuUsuario(usuarioLogueado);
+            menuUsuario.setVisible(true);
+        }
     }
 
     public void botonModificarDatosClick(MouseEvent e) {
@@ -154,15 +166,9 @@ public class PerfilUsuario extends JFrame {
         modificarPerfil.setVisible(true);
     }
 
-    /*private void colocarRadioBotones(){
-
-        JRadioButton radioBotonEliminar = new JRadioButton("Eliminar mi perfil");
-        radioBotonEliminar.setBounds(17, 326, 300, 37);
-        panelInicial.add(radioBotonEliminar);
-    }*/
-
-    public static void main(String[] args) {
-        /*VentanaPerfil ventanaPerfil = new VentanaPerfil();
-        ventanaPerfil.setVisible(true);*/
+    public void cambiarContraseniaClick() {
+        this.dispose();
+        ModificarContrasenia modificarContrasenia = new ModificarContrasenia(usuarioLogueado);
+        modificarContrasenia.setVisible(true);
     }
 }

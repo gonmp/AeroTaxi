@@ -17,7 +17,8 @@ public class UsuariosAdmin extends JFrame {
 
     private JPanel panelInicial;
     private JTable listadoUsuarios;
-    private JButton botonEliminar;
+    private JButton botonModificar;
+    private JButton botonHacerAdmin;
     private Usuario usuarioSeleccionado;
     private Usuario usuarioLogueado;
     private List<Usuario> usuarios;
@@ -83,11 +84,11 @@ public class UsuariosAdmin extends JFrame {
     }
     private void colocarBotones(){
 
-        botonEliminar = new JButton("Modificar usuario");
-        botonEliminar.setBounds(90, 400, 120, 40);
-        botonEliminar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-        botonEliminar.setEnabled(false);
-        botonEliminar.addMouseListener(new MouseAdapter() {
+        botonModificar = new JButton("Modificar usuario");
+        botonModificar.setBounds(350, 400, 200, 40);
+        botonModificar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonModificar.setEnabled(false);
+        botonModificar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(usuarioSeleccionado != null) {
@@ -95,10 +96,24 @@ public class UsuariosAdmin extends JFrame {
                 }
             }
         });
-        panelInicial.add(botonEliminar);
+        panelInicial.add(botonModificar);
+
+        botonHacerAdmin = new JButton("Hacer admin");
+        botonHacerAdmin.setBounds(570, 400, 170, 40);
+        botonHacerAdmin.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+        botonHacerAdmin.setEnabled(false);
+        botonHacerAdmin.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(usuarioSeleccionado != null) {
+                    botonHacerAdminClick();
+                }
+            }
+        });
+        panelInicial.add(botonHacerAdmin);
 
         JButton botonAtras = new JButton("Atras");
-        botonAtras.setBounds(565, 400, 120, 40);
+        botonAtras.setBounds(750, 400, 120, 40);
         botonAtras.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         botonAtras.addMouseListener(new MouseAdapter() {
             @Override
@@ -120,7 +135,8 @@ public class UsuariosAdmin extends JFrame {
                 usuarioSeleccionado = usuarios.get(seleccion);
                 System.out.println(usuarioSeleccionado.toString());
                 if(usuarioSeleccionado != null) {
-                    botonEliminar.setEnabled(true);
+                    botonModificar.setEnabled(true);
+                    botonHacerAdmin.setEnabled(true);
                 }
             }
         });
@@ -174,6 +190,13 @@ public class UsuariosAdmin extends JFrame {
         this.dispose();
         ModificarPerfilAdmin modificarPerfilAdmin = new ModificarPerfilAdmin(usuarioLogueado, usuarioSeleccionado);
         modificarPerfilAdmin.setVisible(true);
+    }
+
+    public void botonHacerAdminClick() {
+        datosUsuario.hacerAdmin(usuarioSeleccionado);
+        this.dispose();
+        TransformadoEnAdminExito transformadoEnAdminExito = new TransformadoEnAdminExito(usuarioLogueado);
+        transformadoEnAdminExito.setVisible(true);
     }
 
     public String convertirBooleanAString(boolean dato) {

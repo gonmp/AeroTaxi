@@ -13,7 +13,7 @@ public class ReservaExitosa extends JFrame{
 
     public ReservaExitosa(Usuario usuarioLogueado) {
         this.usuarioLogueado = usuarioLogueado;
-        this.setBounds(100, 60, 450, 300);
+        this.setBounds(100, 60, 300, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Aerotaxis PepePotamo");
         iniciarComponentes();

@@ -111,8 +111,6 @@ public class Reservar extends JFrame {
         colocarEtiquetas();
         colocarBotones();
         colocarSpinner();
-        //colocarCajasTexto();
-        //colocarRadioBotones();
         colocarListaDesplegable();
         colocarAreaTexto();
 
@@ -173,12 +171,6 @@ public class Reservar extends JFrame {
         etiquetaCategoria.setBounds(15, 210, 400, 50);
         etiquetaCategoria.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         panelInicial.add(etiquetaCategoria);
-
-        JLabel etiquetaCosto = new JLabel("Costo Total :");
-        etiquetaCosto.setBounds(15, 480, 400, 50);
-        etiquetaCosto.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-        panelInicial.add(etiquetaCosto);
-
     }
 
     private void colocarBotones(){
@@ -209,51 +201,6 @@ public class Reservar extends JFrame {
         });
         panelInicial.add(botonCancelar);
 
-    }
-
-    private void colocarCajasTexto(){
-
-        JTextField cajaTextoCantidadPas = new JTextField();
-        cajaTextoCantidadPas.setBounds(280, 160, 160, 30);
-        cajaTextoCantidadPas.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                limpiarTabla();
-                agregarFilaJTable();
-
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                limpiarTabla();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                limpiarTabla();
-                agregarFilaJTable();
-            }
-        });
-        panelInicial.add(cajaTextoCantidadPas);
-
-        JTextField cajaTextoCosto = new JTextField();
-        cajaTextoCosto.setBounds(280, 490, 160, 30);
-        panelInicial.add(cajaTextoCosto);
-    }
-
-    private void colocarRadioBotones(){
-
-        JRadioButton radioBotonBronze = new JRadioButton("Bronze");
-        radioBotonBronze.setBounds(170, 226, 100, 27);
-        panelInicial.add(radioBotonBronze);
-
-        JRadioButton radioBotonSilver = new JRadioButton("Silver");
-        radioBotonSilver.setBounds(320, 226, 100, 27);
-        panelInicial.add(radioBotonSilver);
-
-        JRadioButton radioBotonGold = new JRadioButton("Gold");
-        radioBotonGold.setBounds(470, 226, 100, 27);
-        panelInicial.add(radioBotonGold);
     }
 
 
@@ -654,26 +601,6 @@ public class Reservar extends JFrame {
 
         return categoria;
     }
-
-    /*public CategoriaAvion transformarCategoriaSeleccionada(String categoriaSeleccionada) {
-        CategoriaAvion categoria = null;
-        switch (categoriaSeleccionada) {
-            case "":
-                ciudad = Ciudad.BUENOS_AIRES;
-                break;
-            case "Cordoba":
-                ciudad = Ciudad.CORDOBA;
-                break;
-            case "Montevideo":
-                ciudad = Ciudad.MONTEVIDEO;
-                break;
-            case "Santiango":
-                ciudad = Ciudad.SANTIAGO;
-                break;
-        }
-
-        return ciudad;
-    }*/
 
     public void buscarAvionesPosibles() {
         avionesPosibles.clear();

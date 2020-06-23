@@ -79,7 +79,7 @@ public class Reservas extends JFrame {
     private void colocarBotones(){
 
         botonEliminar = new JButton("Eliminar reserva");
-        botonEliminar.setBounds(90, 400, 170, 40);
+        botonEliminar.setBounds(350, 400, 170, 40);
         botonEliminar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         botonEliminar.setEnabled(false);
         botonEliminar.addMouseListener(new MouseAdapter() {

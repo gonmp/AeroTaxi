@@ -52,7 +52,6 @@ public class ModificarPerfilAdmin extends JFrame{
         colocarEtiquetas();
         colocarBotones();
         colocarCajasTexto();
-        colocarRadioBotones();
 
     }
 
@@ -131,13 +130,6 @@ public class ModificarPerfilAdmin extends JFrame{
 
     }
 
-    private void colocarRadioBotones(){
-
-        JRadioButton radioBotonAdmin = new JRadioButton("Juro que no soy un robot");
-        radioBotonAdmin.setBounds(15, 330, 200, 40);
-        panelInicial.add(radioBotonAdmin);
-    }
-
     private void colocarBotones(){
 
         JButton botonConfirmar = new JButton("Confirmar");
@@ -173,6 +165,12 @@ public class ModificarPerfilAdmin extends JFrame{
     }
 
     public void botonConfirmarClick(MouseEvent e) {
+        if(hayCamposVacios()) {
+            etiquetaError.setText("Todos los campos deben estar completos");
+            return;
+        }
+
+
         if(!comprobarEmail()) {
             etiquetaError.setText("Debe ingresar un email valido");
             return;
@@ -192,16 +190,10 @@ public class ModificarPerfilAdmin extends JFrame{
         }
 
         //Debemos crear el usuario y almacenarlo
-        Usuario usuarioModificado = datosUsuario.ModificarUsuario(usuarioLogueado, cajaTextoNuevoNombre.getText(), cajaTextoNuevoApellido.getText(), cajaTextoNuevoDni.getText(), Integer.parseInt(cajaTextoNuevaEdad.getText()), cajaTextoNuevoCorreo.getText());
+        Usuario usuarioModificado = datosUsuario.modificarUsuario(usuarioLogueado, cajaTextoNuevoNombre.getText(), cajaTextoNuevoApellido.getText(), cajaTextoNuevoDni.getText(), Integer.parseInt(cajaTextoNuevaEdad.getText()), cajaTextoNuevoCorreo.getText());
         this.dispose();
         MenuUsuario menuUsuario = new MenuUsuario(usuarioModificado);
         menuUsuario.setVisible(true);
-    }
-
-    public void comprobarCamposVacios() {
-        if(hayCamposVacios()) {
-            etiquetaError.setText("Todos los campos deben estar completos");
-        }
     }
 
     public boolean hayCamposVacios() {
