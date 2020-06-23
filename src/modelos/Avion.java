@@ -19,7 +19,7 @@ public class Avion {
     private int tarifa;
     private List<Calendar> fechasReservado = new ArrayList<Calendar>();;
 
-    public Avion(int id, CategoriaAvion categoria, int capacidadCombustible, int costoPorKilometro, int capacidadPasajeros, int velocidadMaxima, Propulsion propulsion, boolean wifi, boolean catering, int tarifa) {
+    public Avion(int id, CategoriaAvion categoria, int capacidadCombustible, int costoPorKilometro, int capacidadPasajeros, int velocidadMaxima, Propulsion propulsion, boolean wifi, boolean catering) {
         this.id = id;
         this.categoria = categoria;
         this.capacidadCombustible = capacidadCombustible;
@@ -29,7 +29,7 @@ public class Avion {
         this.propulsion = propulsion;
         this.wifi = wifi;
         this.catering = catering;
-        this.tarifa = tarifa;
+        setearTarifa();
         //fechasReservado = new ArrayList<Calendar>();
     }
 
@@ -158,6 +158,16 @@ public class Avion {
             return true;
         }
         return false;
+    }
+
+    public void setearTarifa() {
+        if(categoria == CategoriaAvion.GOLD) {
+            tarifa = 6000;
+        } else if(categoria == CategoriaAvion.SILVER) {
+            tarifa = 4500;
+        } else {
+            tarifa = 3000;
+        }
     }
 
     public boolean equals(Object o) {

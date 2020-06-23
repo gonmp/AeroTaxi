@@ -59,5 +59,18 @@
     "catering": false,
     "tarifa": 3000,
     "fechasReservado": []
+  },
+  {
+    "id": 5,
+    "categoria": "GOLD",
+    "capacidadCombustible": 200,
+    "costoPorKilometro": 150,
+    "capacidadPasajeros": 7,
+    "velocidadMaxima": 300,
+    "propulsion": "MOTOR_A_PISTONES",
+    "wifi": true,
+    "catering": true,
+    "tarifa": 6000,
+    "fechasReservado": []
   }
 ]

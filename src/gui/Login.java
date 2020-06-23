@@ -136,9 +136,7 @@ public class Login extends JFrame {
 
         //Loguear al usuario
         System.out.println(usuarioLoguar.toString());
-        this.dispose();
-        MenuUsuario menuUsuario = new MenuUsuario(usuarioLoguar);
-        menuUsuario.setVisible(true);
+        loguearUsuario();
     }
 
     public void botonRegistrarseClick(MouseEvent e) {
@@ -149,6 +147,18 @@ public class Login extends JFrame {
 
     public void botonSalirClick(MouseEvent e) {
         System.exit(0);
+    }
+
+    public void loguearUsuario() {
+        if(usuarioLoguar.isAdmin()) {
+            this.dispose();
+            MenuAdmin menuAdmin = new MenuAdmin(usuarioLoguar);
+            menuAdmin.setVisible(true);
+        } else {
+            this.dispose();
+            MenuUsuario menuUsuario = new MenuUsuario(usuarioLoguar);
+            menuUsuario.setVisible(true);
+        }
     }
 
     public static void main(String[] args) {

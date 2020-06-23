@@ -143,10 +143,10 @@ public class GestorArchivoAviones {
     }
 
     public static void main(String[] args) {
-        Avion avion1 = new Avion(1, CategoriaAvion.BRONZE, 200, 150, 5, 200, Propulsion.MOTOR_A_HELICE, false, false, 3000);
-        Avion avion2 = new Avion(2, CategoriaAvion.SILVER, 350, 200, 8, 250, Propulsion.MOTOR_A_PISTONES, false, false, 4000);
-        Avion avion3 = new Avion(3, CategoriaAvion.GOLD, 250, 175, 7, 200, Propulsion.MOTOR_A_HELICE, false, false, 6000);
-        Avion avion4 = new Avion(4, CategoriaAvion.BRONZE, 200, 150, 5, 200, Propulsion.MOTOR_A_HELICE, false, false, 3000);
+        Avion avion1 = new Avion(1, CategoriaAvion.BRONZE, 200, 150, 5, 200, Propulsion.MOTOR_A_HELICE, false, false);
+        Avion avion2 = new Avion(2, CategoriaAvion.SILVER, 350, 200, 8, 250, Propulsion.MOTOR_A_PISTONES, false, false);
+        Avion avion3 = new Avion(3, CategoriaAvion.GOLD, 250, 175, 7, 200, Propulsion.MOTOR_A_HELICE, false, false);
+        Avion avion4 = new Avion(4, CategoriaAvion.BRONZE, 200, 150, 5, 200, Propulsion.MOTOR_A_HELICE, false, false);
 
         GestorArchivoAviones gestorArchivoAviones = new GestorArchivoAviones();
 
