@@ -39,17 +39,9 @@
     "fechasReservado": [
       {
         "year": 2021,
-        "month": 3,
-        "dayOfMonth": 17,
-        "hourOfDay": 1,
-        "minute": 0,
-        "second": 0
-      },
-      {
-        "year": 2020,
-        "month": 6,
-        "dayOfMonth": 31,
-        "hourOfDay": 17,
+        "month": 5,
+        "dayOfMonth": 14,
+        "hourOfDay": 14,
         "minute": 0,
         "second": 0
       }

@@ -26,6 +26,12 @@ public class ReservarVuelo {
         gestorArchivoAviones.eliminarFechaReserva(reserva.getAvion(), reserva.getFecha());
     }
 
+    public ArrayList<Reserva> filtrarAvionesPorFecha(int anio, int mes, int dia) {
+        Calendar fecha = Calendar.getInstance();
+        fecha.set(anio, mes, dia);
+        return gestorArchivoReservas.filtrarReservaPorFecha(fecha);
+    }
+
     public ArrayList<Avion> filtrarAviones( int cantidadDePasajeros, int anio, int mes, int dia) {
         Calendar fecha = Calendar.getInstance();
         fecha.set(anio, mes, dia);
@@ -46,5 +52,9 @@ public class ReservarVuelo {
 
     public ArrayList<Reserva> filtrarReservasDeUsuario(Usuario usuario) {
         return gestorArchivoReservas.filtrarReservaDeUsuario(usuario);
+    }
+
+    public ArrayList<Reserva> listarTodasLasReservas() {
+        return gestorArchivoReservas.getReservas();
     }
 }

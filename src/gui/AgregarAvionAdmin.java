@@ -19,51 +19,51 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
-public class Reservar extends JFrame {
+public class AgregarAvionAdmin extends JFrame {
+    /*private JPanel panelInicial;
 
-    private JPanel panelInicial;
-
-    private String[] origenes = {"Buenos Aires", "Cordoba", "Santiago", "Montevideo"};
+    private String[] propulsion = {"Buenos Aires", "Cordoba", "Santiago", "Montevideo"};
     private List<String> destinos;
-    private String[] categorias = {"Todas", "Gold", "Silver", "Bronze"};
+    private String[] categorias = {"Gold", "Silver", "Bronze"};
+    private String[] booleanos = {"SI", "NO"};
     private List<Integer> anios;
     private List<String> meses;
     private List<Integer> dias;
     private List<Integer> horas;
-    private JTable listadoVuelos;
-    private DefaultTableModel model;
+    JTable listadoVuelos;
+    DefaultTableModel model;
 
-    private ReservarVuelo reservarVuelo;
-    private Reserva reservaSeleccionada;
+    ReservarVuelo reservarVuelo;
+    Reserva reservaSeleccionada;
 
-    private List<Avion> avionesPosibles;
-    private List<Reserva> reservasPosibles;
+    List<Avion> avionesPosibles;
+    List<Reserva> reservasPosibles;
 
-    private JComboBox listaAnios;
-    private JComboBox listaMeses;
-    private JComboBox listaDias;
-    private JComboBox listaHoras;
-    private JComboBox listaOrigenes;
-    private JComboBox listaDestinos;
-    private JSpinner spinnerPasajeros;
-    private JComboBox listaCategoriaAvion;
+    JComboBox listaAnios;
+    JComboBox listaMeses;
+    JComboBox listaDias;
+    JComboBox listaHoras;
+    JComboBox listaOrigenes;
+    JComboBox listaDestinos;
+    JSpinner spinnerPasajeros;
+    JComboBox listaCategoriaAvion;
 
-    private JButton botonConfirmar;
+    JButton botonConfirmar;
 
-    private Calendar calendario;
+    Calendar calendario;
 
-    private Usuario usuarioLogueado;
+    Usuario usuarioLogueado;
 
-    private int anioSeleccionado;
-    private int mesSeleccionado;
-    private int diaSeleccionado;
-    private int horaSeleccionada;
-    private Ciudad origenSeleccionado;
-    private Ciudad destinoSeleccionado;
-    private int cantidadDePasajerosSeleccionado;
-    private String categoriaAvionSeleccionada;
+    int anioSeleccionado;
+    int mesSeleccionado;
+    int diaSeleccionado;
+    int horaSeleccionada;
+    Ciudad origenSeleccionado;
+    Ciudad destinoSeleccionado;
+    int cantidadDePasajerosSeleccionado;
+    String categoriaAvionSeleccionada;
 
-    public Reservar(Usuario usuarioLogueado){
+    public AgregarAvionAdmin(Usuario usuarioLogueado){
 
 
         this.usuarioLogueado = usuarioLogueado;
@@ -675,7 +675,7 @@ public class Reservar extends JFrame {
         return ciudad;
     }*/
 
-    public void buscarAvionesPosibles() {
+    /*public void buscarAvionesPosibles() {
         avionesPosibles.clear();
         if(listaCategoriaAvion.getSelectedItem().equals("Todas")) {
             avionesPosibles = reservarVuelo.filtrarAviones((Integer) spinnerPasajeros.getValue(), (Integer) listaAnios.getSelectedItem(), transformarMesEnInt((String) listaMeses.getSelectedItem()), (Integer) listaDias.getSelectedItem());
@@ -762,7 +762,7 @@ public class Reservar extends JFrame {
 
     public static void main(String[] args) {
         Usuario usuario = new Usuario(1, "Pepe", "Gomez", "35123456", 29, "pepegomez@gmail.com", "123456");
-        Reservar reservar = new Reservar(usuario);
-        reservar.setVisible(true);
-    }
+        AgregarAvionAdmin agregarAvionAdmin = new AgregarAvionAdmin(usuario);
+        agregarAvionAdmin.setVisible(true);
+    }*/
 }

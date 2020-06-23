@@ -31,7 +31,8 @@ public class Registro {
     }
 
     public Usuario crearUsuario(String nombre, String apellido, String dni, int edad, String email, String contrasenia) {
-        Usuario nuevoUsuario = new Usuario(1, nombre, apellido, dni, edad, email, contrasenia);
+        int id = gestorArchivoUsuarios.devolverUltimosId() + 1;
+        Usuario nuevoUsuario = new Usuario(id, nombre, apellido, dni, edad, email, contrasenia);
         return nuevoUsuario;
     }
 

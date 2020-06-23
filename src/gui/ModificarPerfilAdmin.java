@@ -12,12 +12,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ModificarPerfil extends JFrame {
-
+public class ModificarPerfilAdmin extends JFrame{
     private JPanel panelInicial;
     private Usuario usuarioLogueado;
     private DatosUsuario datosUsuario;
-    private Registro registro;
+    private control.Registro registro;
     private JLabel etiquetaError;
 
     JTextField cajaTextoNuevoDni;
@@ -26,10 +25,13 @@ public class ModificarPerfil extends JFrame {
     JTextField cajaTextoNuevaEdad;
     JTextField cajaTextoNuevoCorreo;
 
+    Usuario usuarioAModificar;
+
     private List<JTextField> cajasTexto;
 
-    public ModificarPerfil(Usuario usuarioLogueado) {
+    public ModificarPerfilAdmin(Usuario usuarioLogueado, Usuario usuarioAModificar) {
         this.usuarioLogueado = usuarioLogueado;
+        this.usuarioAModificar = usuarioAModificar;
         datosUsuario = new DatosUsuario();
 
         registro = new Registro();
@@ -104,27 +106,27 @@ public class ModificarPerfil extends JFrame {
 
         cajaTextoNuevoDni = new JTextField();
         cajaTextoNuevoDni.setBounds(220, 65, 200, 35);
-        cajaTextoNuevoDni.setText(usuarioLogueado.getDni());
+        cajaTextoNuevoDni.setText(usuarioAModificar.getDni());
         panelInicial.add(cajaTextoNuevoDni);
 
         cajaTextoNuevoNombre = new JTextField();
         cajaTextoNuevoNombre.setBounds(220, 115, 200, 35);
-        cajaTextoNuevoNombre.setText(usuarioLogueado.getNombre());
+        cajaTextoNuevoNombre.setText(usuarioAModificar.getNombre());
         panelInicial.add(cajaTextoNuevoNombre);
 
         cajaTextoNuevoApellido = new JTextField();
         cajaTextoNuevoApellido.setBounds(220, 165, 200, 35);
-        cajaTextoNuevoApellido.setText(usuarioLogueado.getApellido());
+        cajaTextoNuevoApellido.setText(usuarioAModificar.getApellido());
         panelInicial.add(cajaTextoNuevoApellido);
 
         cajaTextoNuevaEdad = new JTextField();
         cajaTextoNuevaEdad.setBounds(220, 215, 200, 35);
-        cajaTextoNuevaEdad.setText(String.valueOf(usuarioLogueado.getEdad()));
+        cajaTextoNuevaEdad.setText(String.valueOf(usuarioAModificar.getEdad()));
         panelInicial.add(cajaTextoNuevaEdad);
 
         cajaTextoNuevoCorreo = new JTextField();
         cajaTextoNuevoCorreo.setBounds(220, 266, 200, 35);
-        cajaTextoNuevoCorreo.setText(usuarioLogueado.getEmail());
+        cajaTextoNuevoCorreo.setText(usuarioAModificar.getEmail());
         panelInicial.add(cajaTextoNuevoCorreo);
 
     }
@@ -238,8 +240,8 @@ public class ModificarPerfil extends JFrame {
 
     public void botonCancelarClick(MouseEvent e) {
         this.dispose();
-        PerfilUsuario perfilUsuario = new PerfilUsuario(usuarioLogueado);
-        perfilUsuario.setVisible(true);
+        UsuariosAdmin usuariosAdmin = new UsuariosAdmin(usuarioLogueado);
+        usuariosAdmin.setVisible(true);
     }
 
     public static void main(String[] args) {

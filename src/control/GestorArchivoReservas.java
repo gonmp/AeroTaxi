@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -85,7 +86,7 @@ public class GestorArchivoReservas {
     }
 
     public int devolverUltimosId(){
-        int ultimoId = 1;
+        int ultimoId = 0;
         Iterator<Reserva> iteradorReservas = reservas.iterator();
         Reserva aux;
         while(iteradorReservas.hasNext()) {
@@ -106,5 +107,25 @@ public class GestorArchivoReservas {
             }
         }
         return (ArrayList<Reserva>) reservasDeUsuario;
+    }
+
+    public ArrayList<Reserva> filtrarReservaPorFecha(Calendar fecha) {
+        List<Reserva> reservasPorFecha = new ArrayList<Reserva>();
+        Iterator<Reserva> iteradorReservas = reservas.iterator();
+        Reserva aux;
+        while(iteradorReservas.hasNext()) {
+            aux = iteradorReservas.next();
+            if(compararFechas(aux.getFecha(), fecha)) {
+                reservasPorFecha.add(aux);
+            }
+        }
+        return (ArrayList<Reserva>) reservasPorFecha;
+    }
+
+    public boolean compararFechas(Calendar fecha1, Calendar fecha2) {
+        if (fecha1.get(Calendar.YEAR) == fecha2.get(Calendar.YEAR) && fecha1.get(Calendar.MONTH) == fecha2.get(Calendar.MONTH) && fecha1.get(Calendar.DATE) == fecha2.get(Calendar.DATE)) {
+            return true;
+        }
+        return false;
     }
 }

@@ -1,7 +1,6 @@
 package gui;
 
-import control.ReservarVuelo;
-import modelos.Reserva;
+import control.DatosUsuario;
 import modelos.Usuario;
 
 import javax.swing.*;
@@ -11,66 +10,72 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
-public class Reservas extends JFrame {
+public class UsuariosAdmin extends JFrame {
 
     private JPanel panelInicial;
-    private JTable listadoVuelos;
+    private JTable listadoUsuarios;
     private JButton botonEliminar;
-    private Reserva reservaSeleccionada;
+    private Usuario usuarioSeleccionado;
     private Usuario usuarioLogueado;
-    private ReservarVuelo reservarVuelo;
-    private List<Reserva> todasLasReservas;
+    private List<Usuario> usuarios;
+    private DatosUsuario datosUsuario;
+    //private List<Reserva> todasLasReservas;
     private DefaultTableModel model;
 
-    public Reservas(Usuario usuarioLogueado) {
+    public UsuariosAdmin(Usuario usuarioLogueado) {
         this.usuarioLogueado = usuarioLogueado;
-        todasLasReservas = new ArrayList<Reserva>();
-        reservarVuelo = new ReservarVuelo();
+        //todasLasReservas = new ArrayList<Reserva>();
+        datosUsuario = new DatosUsuario();
         this.setBounds(100, 60, 1200, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Aerotaxis PepePotamo");
-        iniciarComponentesRegistro();
+        iniciarComponentes();
+        usuarios = new ArrayList<Usuario>();
+        completarUsuarios();
         model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        model.addColumn("Fecha");
-        model.addColumn("Origen");
-        model.addColumn("Destino");
-        model.addColumn("Categoria del avion");
-        model.addColumn("Cantidad de pasajeros");
-        model.addColumn("WiFi");
-        model.addColumn("Servicio de catering");
-        model.addColumn("Total pagado");
+        model.addColumn("Id");
+        model.addColumn("DNI");
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
+        model.addColumn("Edad");
+        model.addColumn("Email");
+        model.addColumn("Contraseña");
+        model.addColumn("Es admin");
 
-        listadoVuelos.setModel(model);
+        listadoUsuarios.setModel(model);
         agregarFilaJTable();
 
     }
 
-    private void iniciarComponentesRegistro(){
+    private void iniciarComponentes(){
+
         colocarPanel();
         colocarEtiquetas();
         colocarBotones();
         colocarAreaTexto();
+
     }
 
     private void colocarPanel(){
+
         panelInicial = new JPanel();
         panelInicial.setLayout(null);
         panelInicial.setBounds(0, 0, 1100, 500);
         this.getContentPane().add(panelInicial);
+
     }
 
     private void colocarEtiquetas(){
 
-        JLabel titulo = new JLabel("Mis Reservas :");
+        JLabel titulo = new JLabel("Usuarios :");
         titulo.setBounds(15, 1, 400, 50);
         titulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
         panelInicial.add(titulo);
@@ -78,16 +83,15 @@ public class Reservas extends JFrame {
     }
     private void colocarBotones(){
 
-        botonEliminar = new JButton("Eliminar reserva");
-        botonEliminar.setBounds(90, 400, 170, 40);
+        botonEliminar = new JButton("Modificar usuario");
+        botonEliminar.setBounds(90, 400, 120, 40);
         botonEliminar.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         botonEliminar.setEnabled(false);
         botonEliminar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(reservaSeleccionada != null) {
-                    reservarVuelo.eliminarReserva(reservaSeleccionada);
-                    botonEliminarClick(e);
+                if(usuarioSeleccionado != null) {
+                    botonModificarClick(e);
                 }
             }
         });
@@ -107,52 +111,50 @@ public class Reservas extends JFrame {
 
     private void colocarAreaTexto(){
 
-        listadoVuelos = new JTable();
-        listadoVuelos.setBounds(0, 0, 1100, 180);
-        listadoVuelos.addMouseListener(new MouseAdapter() {
+        listadoUsuarios = new JTable();
+        listadoUsuarios.setBounds(0, 0, 1100, 180);
+        listadoUsuarios.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int seleccion = listadoVuelos.rowAtPoint(e.getPoint());
-                reservaSeleccionada = todasLasReservas.get(seleccion);
-                System.out.println(reservaSeleccionada.toString());
-                if(reservaSeleccionada != null) {
+                int seleccion = listadoUsuarios.rowAtPoint(e.getPoint());
+                usuarioSeleccionado = usuarios.get(seleccion);
+                System.out.println(usuarioSeleccionado.toString());
+                if(usuarioSeleccionado != null) {
                     botonEliminar.setEnabled(true);
                 }
             }
         });
-        JScrollPane barraDeDesplazamiento = new JScrollPane(listadoVuelos, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane barraDeDesplazamiento = new JScrollPane(listadoUsuarios, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         barraDeDesplazamiento.setBounds(43, 80, 1100, 280);
         panelInicial.add(barraDeDesplazamiento);
 
     }
 
-    public void completarReservasDeUsuario() {
-        todasLasReservas.clear();
-        todasLasReservas = reservarVuelo.filtrarReservasDeUsuario(usuarioLogueado);
+    public void completarUsuarios() {
+        usuarios = datosUsuario.listarTodosLosUsuarios();
     }
 
     public void modificarJTable() {
-        reservaSeleccionada = null;
+        usuarioSeleccionado = null;
     }
 
     public void agregarFilaJTable() {
-        completarReservasDeUsuario();
         limpiarTabla();
         Object fila[] = new Object[8];
         DateFormat date = DateFormat.getDateInstance();
-        Iterator<Reserva> iteradorReservas = todasLasReservas.iterator();
-        Reserva aux;
+        Iterator<Usuario> iteradorUsuarios = usuarios.iterator();
+        Usuario aux;
         int i = 0;
-        while(iteradorReservas.hasNext()) {
-            aux = iteradorReservas.next();
-            fila[0] = date.format(aux.getFecha().getTime()) + " " + aux.getFecha().get(Calendar.HOUR_OF_DAY) + " horas";
-            fila[1] = aux.getOrigen();
-            fila[2] = aux.getDestino();
-            fila[3] = aux.getAvion().getCategoria();
-            fila[4] = aux.getPasajeros();
-            fila[5] = convertirBooleanAString(aux.getAvion().tieneWifi());
-            fila[6] = convertirBooleanAString(aux.getAvion().tieneCatering());
-            fila[7] = aux.getCostoDeVuelo();
+        while(iteradorUsuarios.hasNext()) {
+            aux = iteradorUsuarios.next();
+            fila[0] = aux.getId();
+            fila[1] = aux.getDni();
+            fila[2] = aux.getNombre();
+            fila[3] = aux.getApellido();
+            fila[4] = aux.getEdad();
+            fila[5] = aux.getEmail();
+            fila[6] = aux.getContrasenia();
+            fila[7] = convertirBooleanAString(aux.isAdmin());
             model.addRow(fila);
             i++;
         }
@@ -164,14 +166,14 @@ public class Reservas extends JFrame {
 
     public void botonAtrasClick() {
         this.dispose();
-        MenuUsuario menuUsuario = new MenuUsuario(usuarioLogueado);
+        MenuAdmin menuUsuario = new MenuAdmin(usuarioLogueado);
         menuUsuario.setVisible(true);
     }
 
-    public void botonEliminarClick(MouseEvent e) {
+    public void botonModificarClick(MouseEvent e) {
         this.dispose();
-        ReservaEliminada reservaEliminada = new ReservaEliminada(usuarioLogueado);
-        reservaEliminada.setVisible(true);
+        ModificarPerfilAdmin modificarPerfilAdmin = new ModificarPerfilAdmin(usuarioLogueado, usuarioSeleccionado);
+        modificarPerfilAdmin.setVisible(true);
     }
 
     public String convertirBooleanAString(boolean dato) {
@@ -186,7 +188,7 @@ public class Reservas extends JFrame {
 
     public static void main(String[] args) {
         Usuario usuario = new Usuario(1, "Pepe", "Gomez", "35123456", 29, "pepegomez@gmail.com", "123456");
-        Reservas reservas = new Reservas(usuario);
-        reservas.setVisible(true);
+        UsuariosAdmin usuariosAdmin = new UsuariosAdmin(usuario);
+        usuariosAdmin.setVisible(true);
     }
 }

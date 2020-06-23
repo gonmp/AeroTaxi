@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import modelos.Reserva;
 import modelos.Usuario;
 
 import java.io.FileNotFoundException;
@@ -23,6 +24,14 @@ public class GestorArchivoUsuarios {
     public GestorArchivoUsuarios() {
         gson = new GsonBuilder().setPrettyPrinting().create();
         leerUsuarios();
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public Usuario buscarUsuario(String dni) {
@@ -91,5 +100,4 @@ public class GestorArchivoUsuarios {
         }
         return  ultimoId;
     }
-
 }
