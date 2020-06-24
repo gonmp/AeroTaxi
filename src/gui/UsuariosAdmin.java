@@ -1,6 +1,7 @@
 package gui;
 
 import control.DatosUsuario;
+import modelos.CategoriaAvion;
 import modelos.Usuario;
 
 import javax.swing.*;
@@ -50,6 +51,8 @@ public class UsuariosAdmin extends JFrame {
         model.addColumn("Email");
         model.addColumn("Contraseña");
         model.addColumn("Es admin");
+        model.addColumn("Mejor avion");
+        model.addColumn("Total gastado");
 
         listadoUsuarios.setModel(model);
         agregarFilaJTable();
@@ -156,7 +159,7 @@ public class UsuariosAdmin extends JFrame {
 
     public void agregarFilaJTable() {
         limpiarTabla();
-        Object fila[] = new Object[8];
+        Object fila[] = new Object[10];
         DateFormat date = DateFormat.getDateInstance();
         Iterator<Usuario> iteradorUsuarios = usuarios.iterator();
         Usuario aux;
@@ -171,6 +174,8 @@ public class UsuariosAdmin extends JFrame {
             fila[5] = aux.getEmail();
             fila[6] = aux.getContrasenia();
             fila[7] = convertirBooleanAString(aux.isAdmin());
+            fila[8] = convertirCategoriaAString(datosUsuario.categoriaMasUtilizada(aux));
+            fila[9] = datosUsuario.totalGastado(aux);
             model.addRow(fila);
             i++;
         }
@@ -207,6 +212,25 @@ public class UsuariosAdmin extends JFrame {
             booleano = "NO";
         }
         return booleano;
+    }
+
+    public String convertirCategoriaAString(CategoriaAvion categoria) {
+        if(categoria == null) {
+            return "No hay reservas";
+        }
+        String categoriaString = "";
+        switch (categoria) {
+            case GOLD:
+                categoriaString = "Gold";
+                break;
+            case SILVER:
+                categoriaString = "Silver";
+                break;
+            case BRONZE:
+                categoriaString = "Bronze";
+                break;
+        }
+        return categoriaString;
     }
 
     public static void main(String[] args) {
